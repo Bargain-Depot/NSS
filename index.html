@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nouri Site Services</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- INTRO ANIMATION -->
+  <div id="intro">
+    <img src="nss-logo.png" alt="Nouri Site Services Logo" class="intro-logo">
+  </div>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="brand">
+      <img src="nss-logo.png" alt="NSS Logo">
+      <span>Nouri Site Services</span>
+    </div>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#plans">Plans</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Modern Websites for Local Businesses</h1>
+      <p>
+        Clean, mobile-friendly websites built to help businesses look professional,
+        get more calls, and bring in more customers.
+      </p>
+      <a href="#plans" class="btn">View Plans</a>
+    </div>
+  </section>
+
+  <!-- PLANS -->
+  <section class="plans" id="plans">
+    <h2>Website Plans</h2>
+    <p class="section-text">Simple options to help businesses get online fast.</p>
+
+    <div class="plan-container">
+
+      <div class="plan-card">
+        <h3>Starter</h3>
+        <p class="price">$250</p>
+        <ul>
+          <li>1-page website</li>
+          <li>Mobile-friendly design</li>
+          <li>Basic contact section</li>
+          <li>Great for small businesses</li>
+        </ul>
+        <a href="#contact" class="plan-btn">Choose Plan</a>
+      </div>
+
+      <div class="plan-card featured">
+        <h3>Professional</h3>
+        <p class="price">$500</p>
+        <ul>
+          <li>Up to 4 pages</li>
+          <li>Services section</li>
+          <li>Quote/contact form</li>
+          <li>Modern business layout</li>
+        </ul>
+        <a href="#contact" class="plan-btn">Choose Plan</a>
+      </div>
+
+      <div class="plan-card">
+        <h3>Premium</h3>
+        <p class="price">$800+</p>
+        <ul>
+          <li>Custom website design</li>
+          <li>Multiple pages</li>
+          <li>Booking or quote setup</li>
+          <li>Extra customization</li>
+        </ul>
+        <a href="#contact" class="plan-btn">Choose Plan</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <h2>Ready to Build Your Website?</h2>
+    <p>Contact Nouri Site Services to get started with a clean, professional website.</p>
+    <a href="mailto:your-email@example.com" class="btn">Contact Me</a>
+  </section>
+
+  <script>
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        document.getElementById("intro").classList.add("hide-intro");
+      }, 2200);
+    });
+  </script>
+
+</body>
+</html>
