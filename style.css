@@ -18,7 +18,7 @@ body {
 #intro {
   position: fixed;
   inset: 0;
-  background: #000000 !important;
+  background: radial-gradient(circle, #4d0013, #1a0006, #000000);
   display: flex;
   align-items: center;
   justify-content: center;
