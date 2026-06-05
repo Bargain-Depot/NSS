@@ -330,6 +330,86 @@ nav a:hover {
   margin: 20px 0 30px;
 }
 
+.section-container {
+  width: min(1100px, 90%);
+  margin: auto;
+}
+
+.vision,
+.services,
+.process {
+  padding: 100px 0;
+  text-align: center;
+}
+
+.vision h2,
+.services h2,
+.process h2 {
+  font-family: 'Senilita', sans-serif;
+  font-size: 3rem;
+  margin-bottom: 25px;
+}
+
+.vision p {
+  max-width: 800px;
+  margin: auto;
+  color: #d5d5d5;
+  line-height: 1.8;
+}
+
+/* Services */
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 50px;
+}
+
+.service-card {
+  background: rgba(77, 0, 19, 0.3);
+  border: 1px solid rgba(230, 0, 57, 0.25);
+  border-radius: 20px;
+  padding: 30px;
+  transition: 0.3s;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 25px rgba(230,0,57,0.2);
+}
+
+.service-card h3 {
+  font-family: 'Senilita', sans-serif;
+  margin-bottom: 15px;
+}
+
+/* Process */
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  margin-top: 50px;
+}
+
+.process-step {
+  padding: 30px;
+}
+
+.process-step span {
+  display: block;
+  font-size: 3rem;
+  color: #e60039;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.process-step h3 {
+  font-family: 'Senilita', sans-serif;
+  margin-bottom: 15px;
+}
+
 /* MOBILE */
 @media (max-width: 768px) {
   .navbar {
