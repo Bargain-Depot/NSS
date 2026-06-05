@@ -264,3 +264,12 @@ nav a:hover {
     padding-top: 120px;
   }
 }
+
+@media (max-width: 768px) {
+
+  #hero-video {
+    object-fit: contain;
+    background: #000;
+  }
+
+}
