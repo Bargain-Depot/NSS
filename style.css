@@ -27,7 +27,10 @@ body {
 }
 
 .intro-logo {
+    width: 280px;
     background: none;
+    border-radius: 12px;
+
 }
 
 @keyframes logoIntro {
