@@ -24,7 +24,9 @@
     </div>
 
  <nav class="menu-wrapper">
-  <button class="menu-btn">Menu ▾</button>
+  <button class="menu-btn" onclick="toggleMenu()">
+  Menu ▾
+</button>
 
   <div class="dropdown-menu">
     <a href="#home">Home</a>
@@ -119,5 +121,11 @@
     });
   </script>
 
+  <script>
+function toggleMenu() {
+  document.querySelector(".dropdown-menu").classList.toggle("show");
+}
+</script>
+  
 </body>
 </html>
