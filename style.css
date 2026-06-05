@@ -1,8 +1,15 @@
+@font-face {
+  font-family: 'Senilita';
+  src: url('Senilita.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Poppins, sans-serif;
 }
 
 html {
@@ -265,6 +272,14 @@ nav a:hover {
   }
 }
 
+.hero h1,
+.plans h2,
+.contact h2,
+.plan-card h3 {
+  font-family: 'Senilita', sans-serif;
+  letter-spacing: 1px;
+}
+
 @media (max-width: 768px) {
 
   #hero-video {
@@ -273,3 +288,5 @@ nav a:hover {
   }
 
 }
+
+
