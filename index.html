@@ -258,7 +258,8 @@
     src="https://calendly.com/bouch-anwar19/30min"
     width="100%"
     height="700"
-    frameborder="0">
+    frameborder="0"
+    loading="lazy">
   </iframe>
 </div>
 
@@ -309,6 +310,14 @@ function revealOnScroll() {
 
 window.addEventListener('scroll', revealOnScroll);
 window.addEventListener('load', revealOnScroll);
+</script>
+
+  <script>
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 100);
+  });
 </script>
   
 </body>
