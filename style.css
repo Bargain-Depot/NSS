@@ -81,10 +81,11 @@ body {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+  top: 10px;
 }
 
 .brand img {
-  width: 85px;
+  width: 100px;
   transition: 0.3s ease;
   cursor: pointer;
 }
@@ -445,6 +446,26 @@ nav a:hover {
     background: #000;
   }
 
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    justify-content: space-between;
+    padding: 16px 6%;
+  }
+
+  .brand {
+    position: static;
+    transform: none;
+  }
+
+  .brand img {
+    width: 75px;
+  }
+
+  .menu-wrapper {
+    position: relative;
+  }
 }
 
 
