@@ -78,15 +78,15 @@ body {
 }
 
 .brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-weight: bold;
-  letter-spacing: 1px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .brand img {
-  width: 45px;
+  width: 85px;
+  transition: 0.3s ease;
+  cursor: pointer;
 }
 
 nav a {
