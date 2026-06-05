@@ -18,7 +18,7 @@ body {
 #intro {
   position: fixed;
   inset: 0;
-  background: radial-gradient(circle, #111111, #050505, #000000);
+  background: #000000 !important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -28,7 +28,8 @@ body {
 
 .intro-logo {
   width: 280px;
-  animation: logoIntro 2s ease forwards;
+  background: #000000;
+  border-radius: 12px;
 }
 
 @keyframes logoIntro {
