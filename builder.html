@@ -146,11 +146,10 @@
 
 <header>
   <h1>Build Your Website</h1>
-  <p>Choose a template, customize features, and get an instant estimate.</p>
+  <p>Choose a package, customize your preview, and get an instant estimate.</p>
 </header>
 
 <div class="container">
-
   <div class="builder-grid">
 
     <div class="panel">
@@ -158,20 +157,29 @@
 
       <label>Choose a Package</label>
       <select id="package">
-        <option value="150" data-monthly="25">Bare-Bones - $150 + $25/mo</option>
-        <option value="375" data-monthly="35">Restaurant - $375 + $35/mo</option>
-        <option value="350" data-monthly="35">Booking Services - $350 + $35/mo</option>
-        <option value="500" data-monthly="50">Online Web Store - $500 + $50/mo</option>
+        <option value="bare">Bare-Bones - $150 + $25/mo</option>
+        <option value="restaurant">Restaurant - $375 + $35/mo</option>
+        <option value="booking">Booking Services - $350 + $35/mo</option>
+        <option value="store">Online Web Store - $500 + $50/mo</option>
       </select>
 
-      <label>Choose a Template</label>
-      <select id="template">
-        <option value="landscaping">Landscaping</option>
-        <option value="restaurant">Restaurant</option>
-        <option value="booking">Booking Services</option>
-        <option value="store">Online Store</option>
-        <option value="blank">Blank Canvas</option>
-      </select>
+      <label>Business Name</label>
+      <input type="text" id="businessName" placeholder="Your Business Name">
+
+      <label>Primary Color</label>
+      <input type="color" id="primaryColor" value="#e60039">
+
+      <label id="templateLabel">Choose a Template</label>
+      <select id="template"></select>
+
+      <label>Category 1</label>
+      <input type="text" id="cat1" placeholder="Services">
+
+      <label>Category 2</label>
+      <input type="text" id="cat2" placeholder="Gallery">
+
+      <label>Category 3</label>
+      <input type="text" id="cat3" placeholder="Reviews">
 
       <label>Extra Pages Beyond Package Limit</label>
       <input type="number" id="pages" value="0" min="0">
@@ -182,7 +190,7 @@
       </div>
 
       <div class="checkbox-row">
-        <input type="checkbox" id="booking">
+        <input type="checkbox" id="bookingSystem">
         <span>Booking System +$60</span>
       </div>
 
@@ -216,9 +224,9 @@
       <h2>Live Preview</h2>
 
       <div class="preview">
-        <div class="preview-nav">
+        <div class="preview-nav" id="previewNav">
           <strong id="previewTitle">Your Business</strong>
-          <span>Home | Services | Contact</span>
+          <span id="previewLinks">Home | About | Contact</span>
         </div>
 
         <div class="preview-hero" id="previewHero">
@@ -228,10 +236,16 @@
 
         <div class="preview-section">
           <h3 id="sectionTitle">Featured Sections</h3>
+
           <div class="cards">
             <div class="card" id="card1">Services</div>
             <div class="card" id="card2">Gallery</div>
             <div class="card" id="card3">Reviews</div>
+          </div>
+
+          <div id="orderButtons" style="display:none; margin-top:20px;">
+            <button>Uber Eats</button>
+            <button>DoorDash</button>
           </div>
         </div>
       </div>
@@ -255,118 +269,234 @@
     </div>
 
   </div>
-
 </div>
 
 <script>
-  const packageSelect = document.getElementById("package");
-  const templateSelect = document.getElementById("template");
-  const pagesInput = document.getElementById("pages");
-  const branding = document.getElementById("branding");
-  const booking = document.getElementById("booking");
-  const thirdParty = document.getElementById("thirdParty");
-  const customOrdering = document.getElementById("customOrdering");
-  const seo = document.getElementById("seo");
-  const animation = document.getElementById("animation");
+const packageSelect = document.getElementById("package");
+const templateSelect = document.getElementById("template");
+const businessName = document.getElementById("businessName");
+const primaryColor = document.getElementById("primaryColor");
 
-  const totalDisplay = document.getElementById("total");
-  const monthlyDisplay = document.getElementById("monthly");
+const cat1 = document.getElementById("cat1");
+const cat2 = document.getElementById("cat2");
+const cat3 = document.getElementById("cat3");
 
-  const previewTitle = document.getElementById("previewTitle");
-  const heroText = document.getElementById("heroText");
-  const heroSubtext = document.getElementById("heroSubtext");
-  const sectionTitle = document.getElementById("sectionTitle");
-  const card1 = document.getElementById("card1");
-  const card2 = document.getElementById("card2");
-  const card3 = document.getElementById("card3");
+const pagesInput = document.getElementById("pages");
+const branding = document.getElementById("branding");
+const bookingSystem = document.getElementById("bookingSystem");
+const thirdParty = document.getElementById("thirdParty");
+const customOrdering = document.getElementById("customOrdering");
+const seo = document.getElementById("seo");
+const animation = document.getElementById("animation");
 
-  function updateCalculator() {
-    let selectedPackage = packageSelect.options[packageSelect.selectedIndex];
-    let total = Number(packageSelect.value);
-    let monthly = Number(selectedPackage.dataset.monthly);
+const totalDisplay = document.getElementById("total");
+const monthlyDisplay = document.getElementById("monthly");
 
-    total += Number(pagesInput.value) * 50;
-    total += Number(animation.value);
+const previewTitle = document.getElementById("previewTitle");
+const previewLinks = document.getElementById("previewLinks");
+const previewHero = document.getElementById("previewHero");
+const previewNav = document.getElementById("previewNav");
+const heroText = document.getElementById("heroText");
+const heroSubtext = document.getElementById("heroSubtext");
+const sectionTitle = document.getElementById("sectionTitle");
+const card1 = document.getElementById("card1");
+const card2 = document.getElementById("card2");
+const card3 = document.getElementById("card3");
+const orderButtons = document.getElementById("orderButtons");
 
-    const packageName = packageSelect.options[packageSelect.selectedIndex].text;
+const templates = {
+  bare: [
+    { value: "blank", text: "Blank Canvas" }
+  ],
+  restaurant: [
+    { value: "restaurant", text: "Restaurant Template" }
+  ],
+  booking: [
+    { value: "landscaping", text: "Landscaping" },
+    { value: "architecture", text: "Architecture" },
+    { value: "contractor", text: "Contractor" },
+    { value: "pressure", text: "Pressure Washing" },
+    { value: "barber", text: "Barbershop" }
+  ],
+  store: [
+    { value: "store", text: "Online Store Template" }
+  ]
+};
 
-    const brandingIncluded =
-      packageName.includes("Restaurant") ||
-      packageName.includes("Booking") ||
-      packageName.includes("Online Web Store");
+function updateTemplateOptions() {
+  const selectedPackage = packageSelect.value;
+  templateSelect.innerHTML = "";
 
-    if (branding.checked && !brandingIncluded) total += 100;
-    if (booking.checked) total += 60;
-    if (thirdParty.checked) total += 45;
-    if (customOrdering.checked) total += 300;
-    if (seo.checked) total += 300;
-
-    totalDisplay.textContent = total;
-    monthlyDisplay.textContent = monthly;
-
-    updatePreview();
-  }
-
-  function updatePreview() {
-    const template = templateSelect.value;
-
-    if (template === "landscaping") {
-      previewTitle.textContent = "GreenScape Pros";
-      heroText.textContent = "Transform Your Outdoor Space";
-      heroSubtext.textContent = "Professional landscaping, lawn care, and outdoor design.";
-      sectionTitle.textContent = "Landscaping Website Features";
-      card1.textContent = "Before & After";
-      card2.textContent = "Quote Form";
-      card3.textContent = "Service Areas";
-    }
-
-    if (template === "restaurant") {
-      previewTitle.textContent = "Fresh Bite Kitchen";
-      heroText.textContent = "Fresh Food. Fast Ordering.";
-      heroSubtext.textContent = "View our menu, gallery, and order online.";
-      sectionTitle.textContent = "Restaurant Website Features";
-      card1.textContent = "Menu";
-      card2.textContent = "Gallery";
-      card3.textContent = "Order Online";
-    }
-
-    if (template === "booking") {
-      previewTitle.textContent = "Prime Booking Services";
-      heroText.textContent = "Book Your Appointment Today";
-      heroSubtext.textContent = "Simple scheduling for service-based businesses.";
-      sectionTitle.textContent = "Booking Website Features";
-      card1.textContent = "Booking Page";
-      card2.textContent = "Reviews";
-      card3.textContent = "Before & After";
-    }
-
-    if (template === "store") {
-      previewTitle.textContent = "Modern Web Store";
-      heroText.textContent = "Shop Our Latest Products";
-      heroSubtext.textContent = "A clean online store built for selling products.";
-      sectionTitle.textContent = "Web Store Features";
-      card1.textContent = "Products";
-      card2.textContent = "Cart";
-      card3.textContent = "Checkout";
-    }
-
-    if (template === "blank") {
-      previewTitle.textContent = "Your Business";
-      heroText.textContent = "Start From Scratch";
-      heroSubtext.textContent = "Build a custom website designed around your goals.";
-      sectionTitle.textContent = "Custom Website Features";
-      card1.textContent = "Custom Layout";
-      card2.textContent = "Your Services";
-      card3.textContent = "Contact Form";
-    }
-  }
-
-  document.querySelectorAll("select, input").forEach(item => {
-    item.addEventListener("change", updateCalculator);
-    item.addEventListener("input", updateCalculator);
+  templates[selectedPackage].forEach(template => {
+    const option = document.createElement("option");
+    option.value = template.value;
+    option.textContent = template.text;
+    templateSelect.appendChild(option);
   });
 
+  if (selectedPackage === "bare") {
+    bookingSystem.checked = false;
+    thirdParty.checked = false;
+    customOrdering.checked = false;
+  }
+
+  if (selectedPackage === "restaurant") {
+    thirdParty.checked = true;
+  }
+
+  if (selectedPackage === "store") {
+    customOrdering.checked = true;
+  }
+
   updateCalculator();
+}
+
+function updateCalculator() {
+  let total = 0;
+  let monthly = 0;
+
+  if (packageSelect.value === "bare") {
+    total = 150;
+    monthly = 25;
+  }
+
+  if (packageSelect.value === "restaurant") {
+    total = 375;
+    monthly = 35;
+  }
+
+  if (packageSelect.value === "booking") {
+    total = 350;
+    monthly = 35;
+  }
+
+  if (packageSelect.value === "store") {
+    total = 500;
+    monthly = 50;
+  }
+
+  total += Number(pagesInput.value) * 50;
+  total += Number(animation.value);
+
+  const brandingIncluded =
+    packageSelect.value === "restaurant" ||
+    packageSelect.value === "booking" ||
+    packageSelect.value === "store";
+
+  if (branding.checked && !brandingIncluded) total += 100;
+  if (bookingSystem.checked) total += 60;
+  if (thirdParty.checked && packageSelect.value !== "restaurant") total += 45;
+  if (customOrdering.checked && packageSelect.value !== "store") total += 300;
+  if (seo.checked) total += 300;
+
+  totalDisplay.textContent = total;
+  monthlyDisplay.textContent = monthly;
+
+  updatePreview();
+}
+
+function updatePreview() {
+  const name = businessName.value || "Your Business";
+  const color = primaryColor.value;
+  const template = templateSelect.value;
+
+  previewTitle.textContent = name;
+  previewHero.style.background = `linear-gradient(135deg, ${color}, #111)`;
+  previewNav.style.background = "#111";
+
+  card1.textContent = cat1.value || "Services";
+  card2.textContent = cat2.value || "Gallery";
+  card3.textContent = cat3.value || "Reviews";
+
+  orderButtons.style.display = "none";
+
+  if (template === "blank") {
+    previewLinks.textContent = "Home | About | Contact";
+    heroText.textContent = `Welcome to ${name}`;
+    heroSubtext.textContent = "A simple, clean website to help your business get online.";
+    sectionTitle.textContent = "Basic Website Sections";
+  }
+
+  if (template === "restaurant") {
+    previewLinks.textContent = "Home | Menu | Gallery | Order";
+    heroText.textContent = `Fresh Flavor at ${name}`;
+    heroSubtext.textContent = "Browse our menu, view our gallery, and order online.";
+    sectionTitle.textContent = "Restaurant Features";
+    card1.textContent = cat1.value || "Menu";
+    card2.textContent = cat2.value || "Gallery";
+    card3.textContent = cat3.value || "Reviews";
+    orderButtons.style.display = "block";
+  }
+
+  if (template === "landscaping") {
+    previewLinks.textContent = "Home | Services | Gallery | Book";
+    heroText.textContent = `Transform Your Outdoor Space`;
+    heroSubtext.textContent = `${name} helps bring your landscape vision to life.`;
+    sectionTitle.textContent = "Landscaping Features";
+    card1.textContent = cat1.value || "Before & After";
+    card2.textContent = cat2.value || "Quote Form";
+    card3.textContent = cat3.value || "Service Areas";
+  }
+
+  if (template === "architecture") {
+    previewLinks.textContent = "Home | Projects | Services | Contact";
+    heroText.textContent = `Designing Spaces With Purpose`;
+    heroSubtext.textContent = `${name} creates modern, functional design solutions.`;
+    sectionTitle.textContent = "Architecture Features";
+    card1.textContent = cat1.value || "Projects";
+    card2.textContent = cat2.value || "Design Process";
+    card3.textContent = cat3.value || "Consultation";
+  }
+
+  if (template === "contractor") {
+    previewLinks.textContent = "Home | Services | Projects | Contact";
+    heroText.textContent = `Reliable Contracting Services`;
+    heroSubtext.textContent = `${name} delivers quality work for every project.`;
+    sectionTitle.textContent = "Contractor Features";
+    card1.textContent = cat1.value || "Services";
+    card2.textContent = cat2.value || "Projects";
+    card3.textContent = cat3.value || "Reviews";
+  }
+
+  if (template === "pressure") {
+    previewLinks.textContent = "Home | Services | Results | Book";
+    heroText.textContent = `Powerful Cleaning. Professional Results.`;
+    heroSubtext.textContent = `${name} restores driveways, siding, patios, and more.`;
+    sectionTitle.textContent = "Pressure Washing Features";
+    card1.textContent = cat1.value || "Before & After";
+    card2.textContent = cat2.value || "Service Packages";
+    card3.textContent = cat3.value || "Book Now";
+  }
+
+  if (template === "barber") {
+    previewLinks.textContent = "Home | Services | Barbers | Book";
+    heroText.textContent = `Fresh Cuts. Easy Booking.`;
+    heroSubtext.textContent = `${name} makes it simple to book your next appointment.`;
+    sectionTitle.textContent = "Barbershop Features";
+    card1.textContent = cat1.value || "Haircuts";
+    card2.textContent = cat2.value || "Barbers";
+    card3.textContent = cat3.value || "Booking";
+  }
+
+  if (template === "store") {
+    previewLinks.textContent = "Home | Shop | Products | Cart";
+    heroText.textContent = `Shop ${name}`;
+    heroSubtext.textContent = "Browse products, update prices, and manage your online store.";
+    sectionTitle.textContent = "Online Store Features";
+    card1.textContent = cat1.value || "Products";
+    card2.textContent = cat2.value || "Cart";
+    card3.textContent = cat3.value || "Checkout";
+  }
+}
+
+document.querySelectorAll("select, input").forEach(item => {
+  item.addEventListener("change", updateCalculator);
+  item.addEventListener("input", updateCalculator);
+});
+
+packageSelect.addEventListener("change", updateTemplateOptions);
+
+updateTemplateOptions();
 </script>
 
 </body>
