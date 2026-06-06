@@ -280,48 +280,45 @@
 
   </div>
 
-  <!-- Website Builder CTA -->
+<!-- Website Builder CTA -->
 
-  <div style="max-width:900px; margin:60px auto 0; text-align:center;">
-
+<div class="builder-card reveal-card">
+  <div class="builder-card-content">
+    <span class="mini-label">Interactive Tool</span>
     <h3>Build Your Website</h3>
 
     <p>
-      Use our interactive Website Builder to customize templates,
-      select features, estimate pricing, and design the perfect
-      website for your business.
+      Customize templates, choose your features, estimate pricing,
+      and design the perfect website for your business.
     </p>
 
     <a href="builder.html" class="plan-btn">
       Open Website Builder →
     </a>
+  </div>
+</div>
 
+<!-- Additional Services -->
+
+<div class="addons-card reveal-card">
+  <span class="mini-label">Add-On Options</span>
+  <h3>Additional Services</h3>
+
+  <div class="addons-grid">
+    <div>Additional Pages <strong>$50/page</strong></div>
+    <div>Booking System <strong>$60</strong></div>
+    <div>Third-Party Ordering <strong>$45</strong></div>
+    <div>Custom Ordering System <strong>$300</strong></div>
+    <div>Business Branding <strong>$100</strong></div>
+    <div>Advanced SEO Package <strong>$300</strong></div>
+    <div>Custom Animations <strong>$25 / 5 sec</strong></div>
   </div>
 
-  <!-- Additional Services -->
-
-  <div style="max-width:900px; margin:50px auto 0; text-align:center;">
-
-    <h3>Additional Services</h3>
-
-    <p>
-      Additional Pages ($50/page) •
-      Booking System ($60) •
-      Third-Party Ordering ($45) •
-      Custom Ordering System ($300) •
-      Business Branding ($100) •
-      Advanced SEO Package ($300) •
-      Custom Animations ($25 per 5 seconds)
-    </p>
-
-    <p style="margin-top:25px; opacity:0.85;">
-      Need something unique?
-      Every NSS website can be fully customized. If you don't see a feature listed,
-      just ask. We'll work with you to create a solution tailored specifically to
-      your business and goals.
-    </p>
-
-  </div>
+  <p class="custom-note">
+    Need something unique? Every NSS website can be fully customized.
+    If you don't see a feature listed, just ask.
+  </p>
+</div>
 
 </section>
 
@@ -402,6 +399,24 @@ window.addEventListener('load', revealOnScroll);
       window.scrollTo(0, 0);
     }, 100);
   });
+</script>
+
+<script>
+  const revealCards = document.querySelectorAll(".reveal-card");
+
+  function revealOnScroll() {
+    revealCards.forEach(card => {
+      const cardTop = card.getBoundingClientRect().top;
+      const windowHeight = window.innerHeight;
+
+      if (cardTop < windowHeight - 100) {
+        card.classList.add("active");
+      }
+    });
+  }
+
+  window.addEventListener("scroll", revealOnScroll);
+  revealOnScroll();
 </script>
   
 </body>
