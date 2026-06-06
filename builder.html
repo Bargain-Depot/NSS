@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Build Your Website | NSS</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      color: #111;
+    }
+
+    header {
+      background: #111;
+      color: white;
+      padding: 25px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 30px 20px;
+    }
+
+    .builder-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .panel {
+      background: white;
+      padding: 25px;
+      border-radius: 18px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+    }
+
+    select, input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 8px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+
+    .checkbox-row {
+      margin-top: 12px;
+    }
+
+    .checkbox-row input {
+      width: auto;
+      margin-right: 8px;
+    }
+
+    .preview {
+      border-radius: 18px;
+      overflow: hidden;
+      border: 2px solid #ddd;
+      background: white;
+    }
+
+    .preview-nav {
+      background: #111;
+      color: white;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .preview-hero {
+      padding: 50px 25px;
+      color: white;
+      background: linear-gradient(135deg, #1f7a4d, #111);
+      text-align: center;
+    }
+
+    .preview-section {
+      padding: 25px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .card {
+      background: #eee;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .price-box {
+      background: #111;
+      color: white;
+      padding: 25px;
+      border-radius: 18px;
+      margin-top: 25px;
+    }
+
+    .price-box h2 {
+      margin-top: 0;
+    }
+
+    .note {
+      background: #fff6d6;
+      padding: 20px;
+      border-left: 5px solid #d6a500;
+      border-radius: 12px;
+      margin-top: 25px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #111;
+      color: white;
+      padding: 14px 22px;
+      border-radius: 12px;
+      text-decoration: none;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    @media (max-width: 800px) {
+      .builder-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Build Your Website</h1>
+  <p>Choose a template, customize features, and get an instant estimate.</p>
+</header>
+
+<div class="container">
+
+  <div class="builder-grid">
+
+    <div class="panel">
+      <h2>Customize Your Website</h2>
+
+      <label>Choose a Package</label>
+      <select id="package">
+        <option value="150" data-monthly="25">Bare-Bones - $150 + $25/mo</option>
+        <option value="375" data-monthly="35">Restaurant - $375 + $35/mo</option>
+        <option value="350" data-monthly="35">Booking Services - $350 + $35/mo</option>
+        <option value="500" data-monthly="50">Online Web Store - $500 + $50/mo</option>
+      </select>
+
+      <label>Choose a Template</label>
+      <select id="template">
+        <option value="landscaping">Landscaping</option>
+        <option value="restaurant">Restaurant</option>
+        <option value="booking">Booking Services</option>
+        <option value="store">Online Store</option>
+        <option value="blank">Blank Canvas</option>
+      </select>
+
+      <label>Extra Pages Beyond Package Limit</label>
+      <input type="number" id="pages" value="0" min="0">
+
+      <div class="checkbox-row">
+        <input type="checkbox" id="branding">
+        <span>Business Branding +$100</span>
+      </div>
+
+      <div class="checkbox-row">
+        <input type="checkbox" id="booking">
+        <span>Booking System +$60</span>
+      </div>
+
+      <div class="checkbox-row">
+        <input type="checkbox" id="thirdParty">
+        <span>Third-Party Ordering Integration +$45</span>
+      </div>
+
+      <div class="checkbox-row">
+        <input type="checkbox" id="customOrdering">
+        <span>Custom Ordering System +$300</span>
+      </div>
+
+      <div class="checkbox-row">
+        <input type="checkbox" id="seo">
+        <span>Advanced SEO Package +$300</span>
+      </div>
+
+      <label>Animation Length</label>
+      <select id="animation">
+        <option value="0">No Animation - $0</option>
+        <option value="25">5 Seconds - $25</option>
+        <option value="50">10 Seconds - $50</option>
+        <option value="75">15 Seconds - $75</option>
+        <option value="150">30 Seconds - $150</option>
+        <option value="300">60 Seconds - $300</option>
+      </select>
+    </div>
+
+    <div class="panel">
+      <h2>Live Preview</h2>
+
+      <div class="preview">
+        <div class="preview-nav">
+          <strong id="previewTitle">Your Business</strong>
+          <span>Home | Services | Contact</span>
+        </div>
+
+        <div class="preview-hero" id="previewHero">
+          <h1 id="heroText">Professional Website Preview</h1>
+          <p id="heroSubtext">A clean, modern website built for your business.</p>
+        </div>
+
+        <div class="preview-section">
+          <h3 id="sectionTitle">Featured Sections</h3>
+          <div class="cards">
+            <div class="card" id="card1">Services</div>
+            <div class="card" id="card2">Gallery</div>
+            <div class="card" id="card3">Reviews</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="price-box">
+        <h2>Estimated Price</h2>
+        <p>Website Cost: <strong>$<span id="total">150</span></strong></p>
+        <p>Monthly Maintenance: <strong>$<span id="monthly">25</span>/mo</strong></p>
+      </div>
+
+      <div class="note">
+        <strong>Need something unique?</strong>
+        <p>
+          Every NSS website can be fully customized. If you don't see a feature listed,
+          just ask. We'll work with you to create a solution tailored specifically to
+          your business and goals.
+        </p>
+      </div>
+
+      <a href="contact.html" class="btn">Request Complimentary Preview</a>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+  const packageSelect = document.getElementById("package");
+  const templateSelect = document.getElementById("template");
+  const pagesInput = document.getElementById("pages");
+  const branding = document.getElementById("branding");
+  const booking = document.getElementById("booking");
+  const thirdParty = document.getElementById("thirdParty");
+  const customOrdering = document.getElementById("customOrdering");
+  const seo = document.getElementById("seo");
+  const animation = document.getElementById("animation");
+
+  const totalDisplay = document.getElementById("total");
+  const monthlyDisplay = document.getElementById("monthly");
+
+  const previewTitle = document.getElementById("previewTitle");
+  const heroText = document.getElementById("heroText");
+  const heroSubtext = document.getElementById("heroSubtext");
+  const sectionTitle = document.getElementById("sectionTitle");
+  const card1 = document.getElementById("card1");
+  const card2 = document.getElementById("card2");
+  const card3 = document.getElementById("card3");
+
+  function updateCalculator() {
+    let selectedPackage = packageSelect.options[packageSelect.selectedIndex];
+    let total = Number(packageSelect.value);
+    let monthly = Number(selectedPackage.dataset.monthly);
+
+    total += Number(pagesInput.value) * 50;
+    total += Number(animation.value);
+
+    const packageName = packageSelect.options[packageSelect.selectedIndex].text;
+
+    const brandingIncluded =
+      packageName.includes("Restaurant") ||
+      packageName.includes("Booking") ||
+      packageName.includes("Online Web Store");
+
+    if (branding.checked && !brandingIncluded) total += 100;
+    if (booking.checked) total += 60;
+    if (thirdParty.checked) total += 45;
+    if (customOrdering.checked) total += 300;
+    if (seo.checked) total += 300;
+
+    totalDisplay.textContent = total;
+    monthlyDisplay.textContent = monthly;
+
+    updatePreview();
+  }
+
+  function updatePreview() {
+    const template = templateSelect.value;
+
+    if (template === "landscaping") {
+      previewTitle.textContent = "GreenScape Pros";
+      heroText.textContent = "Transform Your Outdoor Space";
+      heroSubtext.textContent = "Professional landscaping, lawn care, and outdoor design.";
+      sectionTitle.textContent = "Landscaping Website Features";
+      card1.textContent = "Before & After";
+      card2.textContent = "Quote Form";
+      card3.textContent = "Service Areas";
+    }
+
+    if (template === "restaurant") {
+      previewTitle.textContent = "Fresh Bite Kitchen";
+      heroText.textContent = "Fresh Food. Fast Ordering.";
+      heroSubtext.textContent = "View our menu, gallery, and order online.";
+      sectionTitle.textContent = "Restaurant Website Features";
+      card1.textContent = "Menu";
+      card2.textContent = "Gallery";
+      card3.textContent = "Order Online";
+    }
+
+    if (template === "booking") {
+      previewTitle.textContent = "Prime Booking Services";
+      heroText.textContent = "Book Your Appointment Today";
+      heroSubtext.textContent = "Simple scheduling for service-based businesses.";
+      sectionTitle.textContent = "Booking Website Features";
+      card1.textContent = "Booking Page";
+      card2.textContent = "Reviews";
+      card3.textContent = "Before & After";
+    }
+
+    if (template === "store") {
+      previewTitle.textContent = "Modern Web Store";
+      heroText.textContent = "Shop Our Latest Products";
+      heroSubtext.textContent = "A clean online store built for selling products.";
+      sectionTitle.textContent = "Web Store Features";
+      card1.textContent = "Products";
+      card2.textContent = "Cart";
+      card3.textContent = "Checkout";
+    }
+
+    if (template === "blank") {
+      previewTitle.textContent = "Your Business";
+      heroText.textContent = "Start From Scratch";
+      heroSubtext.textContent = "Build a custom website designed around your goals.";
+      sectionTitle.textContent = "Custom Website Features";
+      card1.textContent = "Custom Layout";
+      card2.textContent = "Your Services";
+      card3.textContent = "Contact Form";
+    }
+  }
+
+  document.querySelectorAll("select, input").forEach(item => {
+    item.addEventListener("change", updateCalculator);
+    item.addEventListener("input", updateCalculator);
+  });
+
+  updateCalculator();
+</script>
+
+</body>
+</html>
