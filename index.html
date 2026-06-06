@@ -35,7 +35,7 @@
     <a href="#services">🎨 Services</a>
     <a href="builder.html" class="nav-btn">🔧 Website Builder</a>
     <a href="#portfolio">📁 Portfolio</a>
-    <a href="#pricing">💰 Pricing</a>
+    <a href="#plans">💰 Pricing</a>
     <a href="#contact">📞 Contact</a>
   </div>
 </nav>  
@@ -402,21 +402,21 @@ window.addEventListener('load', revealOnScroll);
 </script>
 
 <script>
-  const revealCards = document.querySelectorAll(".reveal-card");
+  const animatedCards = document.querySelectorAll(".reveal-card");
 
-  function revealOnScroll() {
-    revealCards.forEach(card => {
+  function revealSpecialCards() {
+    animatedCards.forEach(card => {
       const cardTop = card.getBoundingClientRect().top;
       const windowHeight = window.innerHeight;
 
-      if (cardTop < windowHeight - 100) {
+      if (cardTop < windowHeight - 120) {
         card.classList.add("active");
       }
     });
   }
 
-  window.addEventListener("scroll", revealOnScroll);
-  revealOnScroll();
+  window.addEventListener("scroll", revealSpecialCards);
+  window.addEventListener("load", revealSpecialCards);
 </script>
   
 </body>
