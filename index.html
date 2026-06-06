@@ -407,10 +407,13 @@ window.addEventListener('load', revealOnScroll);
   function revealSpecialCards() {
     animatedCards.forEach(card => {
       const cardTop = card.getBoundingClientRect().top;
+      const cardBottom = card.getBoundingClientRect().bottom;
       const windowHeight = window.innerHeight;
 
-      if (cardTop < windowHeight - 120) {
+      if (cardTop < windowHeight - 120 && cardBottom > 120) {
         card.classList.add("active");
+      } else {
+        card.classList.remove("active");
       }
     });
   }
