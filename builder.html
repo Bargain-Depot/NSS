@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Website Builder | NSS</title>
+
+  <meta
+    name="description"
+    content="Use the NSS interactive website builder to compare packages, customize layouts, preview styles, choose features, and estimate your small business website cost."
+  />
+  <link rel="canonical" href="https://bargain-depot.github.io/NSS/builder.html" />
+
+  <meta property="og:title" content="Website Builder | NSS" />
+  <meta
+    property="og:description"
+    content="Customize your website package, preview different layouts, compare features, and get an instant website estimate."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://bargain-depot.github.io/NSS/builder.html" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Website Builder | NSS" />
+  <meta
+    name="twitter:description"
+    content="Customize your website package, preview different layouts, compare features, and get an instant website estimate."
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Lora:wght@400;600;700&family=Montserrat:wght@400;600;700;800&family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Website Builder",
+    "description": "An interactive website builder that lets users compare packages, customize features, preview a website, and get an instant price estimate.",
+    "url": "https://bargain-depot.github.io/NSS/builder.html"
+  }
+  </script>
+
+  <style>
+    @font-face {
+      font-family: 'Senilita';
+      src: url('Senilita.otf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Poppins, sans-serif;
+      background:
+        radial-gradient(circle at 15% 5%, rgba(230, 0, 57, 0.22), transparent 30%),
+        radial-gradient(circle at 85% 20%, rgba(255, 26, 83, 0.16), transparent 28%),
+        #000;
+      color: white;
+      line-height: 1.7;
+    }
+
+    a { color: inherit; }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 18px 8%;
+      background: rgba(0, 0, 0, 0.76);
+      backdrop-filter: blur(14px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(230, 0, 57, 0.3);
+    }
+
+    .menu-wrapper { position: relative; }
+
+    .menu-btn,
+    .nav-link-btn {
+      background: #e60039;
+      color: white;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: Poppins, sans-serif;
+      text-decoration: none;
+      transition: 0.3s ease;
+      display: inline-block;
+      font-size: 0.95rem;
+    }
+
+    .menu-btn:hover,
+    .nav-link-btn:hover {
+      background: #ff1a53;
+      transform: translateY(-2px);
+      box-shadow: 0 0 18px rgba(230, 0, 57, 0.35);
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 66px;
+      left: 0;
+      width: 230px;
+      background: rgba(15, 0, 5, 0.96);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(230, 0, 57, 0.35);
+      border-radius: 20px;
+      padding: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 20px rgba(230,0,57,0.15);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+    }
+
+    .dropdown-menu.show { opacity: 1; visibility: visible; transform: translateY(0); }
+    .dropdown-menu a { display: block; padding: 13px 15px; border-radius: 12px; color: white; text-decoration: none; transition: 0.25s ease; font-size: 0.95rem; }
+    .dropdown-menu a:hover { background: rgba(230, 0, 57, 0.15); color: #ff4d73; padding-left: 21px; }
+
+    .brand { position: absolute; left: 50%; transform: translateX(-50%); }
+    .brand img { width: 100px; display: block; }
+
+    .builder-hero {
+      min-height: 520px;
+      padding: 150px 8% 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background:
+        radial-gradient(circle at center, rgba(230, 0, 57, 0.25), transparent 42%),
+        linear-gradient(180deg, #160007, #000000);
+      border-bottom: 1px solid rgba(230, 0, 57, 0.35);
+    }
+
+    .hero-inner { max-width: 900px; }
+    .mini-label { display: inline-block; margin-bottom: 18px; padding: 8px 16px; border-radius: 999px; background: rgba(230, 0, 57, 0.18); border: 1px solid rgba(230, 0, 57, 0.35); color: #ff4d73; font-size: 0.85rem; font-weight: 800; letter-spacing: 0.4px; }
+    .builder-hero h1 { font-family: 'Senilita', sans-serif; font-size: clamp(2.6rem, 7vw, 5rem); letter-spacing: 1px; line-height: 1; margin-bottom: 20px; }
+    .builder-hero p { max-width: 760px; margin: auto; color: #ddd; font-size: 1.08rem; }
+
+    .container { max-width: 1280px; margin: auto; padding: 70px 20px 95px; }
+    .builder-grid { display: grid; grid-template-columns: minmax(330px, 0.9fr) minmax(460px, 1.1fr); gap: 28px; align-items: start; }
+
+    .panel,
+    .price-box,
+    .note {
+      background: linear-gradient(180deg, #1a0006, #000000);
+      border: 1px solid rgba(230, 0, 57, 0.35);
+      border-radius: 26px;
+      padding: 28px;
+      box-shadow: 0 0 25px rgba(230, 0, 57, 0.15);
+    }
+
+    .panel { margin-bottom: 22px; }
+    .panel h2,
+    .price-box h2 { font-family: 'Senilita', sans-serif; letter-spacing: 1px; font-size: 2.05rem; margin-bottom: 8px; }
+    .panel-subtext { color: #bbb; margin-bottom: 18px; font-size: 0.95rem; }
+
+    label { font-weight: 700; display: block; margin-top: 16px; color: #f5f5f5; }
+    select,
+    input[type="text"],
+    input[type="number"] { width: 100%; padding: 13px 14px; margin-top: 8px; border-radius: 14px; border: 1px solid rgba(230, 0, 57, 0.35); background: rgba(255, 255, 255, 0.06); color: white; font-family: Poppins, sans-serif; outline: none; }
+    select:focus,
+    input:focus { border-color: #ff4d73; box-shadow: 0 0 12px rgba(230, 0, 57, 0.35); }
+    select option { color: #111; }
+    input[type="color"] { width: 100%; height: 52px; padding: 6px; margin-top: 8px; border-radius: 14px; border: 1px solid rgba(230, 0, 57, 0.35); background: rgba(255, 255, 255, 0.06); }
+
+    .control-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+    .studio-choice { border: 1px solid rgba(230, 0, 57, 0.32); background: rgba(255, 255, 255, 0.055); color: white; border-radius: 999px; padding: 10px 14px; cursor: pointer; font-family: Poppins, sans-serif; font-weight: 700; transition: 0.25s ease; }
+    .studio-choice:hover,
+    .studio-choice.active { background: #e60039; transform: translateY(-2px); box-shadow: 0 0 15px rgba(230,0,57,0.28); }
+
+    .checkbox-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
+    .checkbox-row { color: #ddd; display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.045); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 11px; font-size: 0.9rem; }
+    .checkbox-row input { accent-color: #e60039; }
+
+    .preview-shell { position: sticky; top: 105px; }
+    .preview-tools { display: flex; justify-content: space-between; gap: 14px; align-items: center; margin-bottom: 14px; }
+    .preview-tools h2 { font-family: 'Senilita', sans-serif; font-size: 2rem; letter-spacing: 1px; }
+    .device-toggle { display: flex; gap: 8px; }
+
+    .preview-stage { background: rgba(255,255,255,0.04); border: 1px solid rgba(230, 0, 57, 0.25); border-radius: 28px; padding: 18px; overflow: hidden; }
+    .preview-stage.mobile-mode { display: flex; justify-content: center; }
+    .preview-stage.mobile-mode .website-preview { width: 375px; max-width: 100%; border-radius: 36px; min-height: 720px; }
+    .preview-stage.mobile-mode .site-nav { flex-direction: column; gap: 10px; text-align: center; }
+    .preview-stage.mobile-mode .site-links { flex-wrap: wrap; justify-content: center; }
+    .preview-stage.mobile-mode .site-hero { grid-template-columns: 1fr; text-align: center; padding: 46px 22px; }
+    .preview-stage.mobile-mode .site-card-grid,
+    .preview-stage.mobile-mode .product-grid,
+    .preview-stage.mobile-mode .gallery-grid { grid-template-columns: 1fr; }
+
+    /* THE PREVIEW: intentionally independent from the NSS design */
+    .website-preview {
+      --site-primary: #e60039;
+      --site-primary-dark: #111111;
+      --site-accent: #ffdd99;
+      --site-bg: #ffffff;
+      --site-bg-soft: #f5f5f5;
+      --site-text: #141414;
+      --site-muted: #666666;
+      --site-card: #ffffff;
+      --site-border: rgba(0,0,0,0.1);
+      --site-radius: 18px;
+      --site-font: 'Inter', sans-serif;
+      --site-heading: 'Montserrat', sans-serif;
+      --site-shadow: 0 14px 35px rgba(0,0,0,0.12);
+      width: 100%;
+      min-height: 760px;
+      overflow: hidden;
+      border-radius: 24px;
+      background: var(--site-bg);
+      color: var(--site-text);
+      font-family: var(--site-font);
+      box-shadow: 0 25px 70px rgba(0,0,0,0.35);
+      transition: 0.3s ease;
+    }
+
+    .site-nav { padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; background: var(--site-nav-bg, var(--site-bg)); color: var(--site-nav-text, var(--site-text)); border-bottom: 1px solid var(--site-border); }
+    .site-brand { font-weight: 800; letter-spacing: -0.02em; }
+    .site-links { display: flex; gap: 16px; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.88; }
+
+    .site-hero { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 28px; align-items: center; padding: 64px 38px; background: var(--site-hero-bg); color: var(--site-hero-text); min-height: 310px; }
+    .site-hero.centered { display: block; text-align: center; }
+    .site-hero.split { grid-template-columns: 1fr 1fr; text-align: left; }
+    .site-hero.minimal { display: block; background: var(--site-bg); color: var(--site-text); text-align: left; }
+    .site-hero.video { display: block; text-align: center; background: linear-gradient(rgba(0,0,0,0.38), rgba(0,0,0,0.38)), var(--site-hero-bg); color: white; }
+
+    .site-kicker { display: inline-block; margin-bottom: 12px; padding: 7px 12px; border-radius: 999px; background: var(--site-kicker-bg, rgba(255,255,255,0.18)); color: var(--site-kicker-text, inherit); font-size: 0.74rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+    .site-hero h1 { font-family: var(--site-heading); font-size: clamp(2rem, 4vw, 3.55rem); line-height: 1.03; letter-spacing: -0.05em; margin-bottom: 14px; }
+    .site-hero p { color: var(--site-hero-muted, inherit); opacity: 0.88; max-width: 560px; margin-bottom: 22px; }
+    .site-hero.centered p,
+    .site-hero.video p { margin-left: auto; margin-right: auto; }
+    .site-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+    .site-hero.centered .site-actions,
+    .site-hero.video .site-actions { justify-content: center; }
+    .site-btn { display: inline-block; padding: 12px 18px; border-radius: var(--site-btn-radius, 999px); background: var(--site-primary); color: var(--site-button-text, white); text-decoration: none; font-weight: 800; font-size: 0.88rem; box-shadow: var(--site-btn-shadow, none); }
+    .site-btn.secondary { background: var(--site-secondary-btn, transparent); color: var(--site-secondary-text, inherit); border: 1px solid var(--site-secondary-border, currentColor); box-shadow: none; }
+
+    .visual-card { min-height: 205px; border-radius: var(--site-radius); background: var(--site-visual-bg); box-shadow: var(--site-shadow); position: relative; overflow: hidden; border: 1px solid var(--site-border); }
+    .visual-card::before { content: ""; position: absolute; inset: 18px; border-radius: calc(var(--site-radius) - 5px); border: 2px solid var(--site-visual-line, rgba(255,255,255,0.45)); }
+    .visual-card::after { content: ""; position: absolute; width: 44%; height: 44%; right: 12%; bottom: 14%; border-radius: 50%; background: var(--site-visual-orb, rgba(255,255,255,0.35)); }
+    .site-hero.centered .visual-card,
+    .site-hero.minimal .visual-card,
+    .site-hero.video .visual-card { display: none; }
+
+    .site-section { padding: 38px; background: var(--site-bg); }
+    .site-section.alt { background: var(--site-bg-soft); }
+    .site-section h2,
+    .site-section h3 { font-family: var(--site-heading); letter-spacing: -0.03em; margin-bottom: 10px; }
+    .section-lead { color: var(--site-muted); margin-bottom: 22px; max-width: 620px; }
+    .site-card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .site-card { background: var(--site-card); border: 1px solid var(--site-border); border-radius: var(--site-radius); padding: 22px; box-shadow: var(--site-card-shadow, 0 8px 22px rgba(0,0,0,0.06)); min-height: 115px; }
+    .site-card strong { display: block; margin-bottom: 8px; color: var(--site-card-title, var(--site-text)); }
+    .site-card span { color: var(--site-muted); font-size: 0.9rem; }
+
+    .gallery-grid { display: grid; grid-template-columns: 1.2fr 0.8fr 1fr; gap: 12px; }
+    .gallery-item { min-height: 130px; border-radius: var(--site-radius); background: var(--site-gallery-bg); border: 1px solid var(--site-border); }
+    .gallery-item:nth-child(2) { background: var(--site-gallery-bg-2); }
+    .gallery-item:nth-child(3) { background: var(--site-gallery-bg-3); }
+
+    .reviews-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .review { background: var(--site-card); border: 1px solid var(--site-border); border-radius: var(--site-radius); padding: 18px; color: var(--site-muted); box-shadow: var(--site-card-shadow, none); }
+    .review b { color: var(--site-text); display: block; margin-top: 8px; }
+
+    .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .product-card { background: var(--site-card); border: 1px solid var(--site-border); border-radius: var(--site-radius); overflow: hidden; box-shadow: var(--site-card-shadow, 0 8px 22px rgba(0,0,0,0.06)); }
+    .product-img { height: 105px; background: var(--site-gallery-bg); }
+    .product-info { padding: 16px; }
+    .product-info strong { display: block; margin-bottom: 6px; }
+    .product-info span { color: var(--site-primary); font-weight: 800; }
+
+    .site-cta { padding: 34px 38px; background: var(--site-cta-bg, var(--site-primary)); color: var(--site-cta-text, white); display: flex; justify-content: space-between; gap: 18px; align-items: center; }
+    .site-cta h2 { font-family: var(--site-heading); letter-spacing: -0.03em; }
+
+    .website-preview.style-modern { --site-font:'Inter',sans-serif; --site-heading:'Montserrat',sans-serif; --site-bg:#ffffff; --site-bg-soft:#f4f7fb; --site-text:#101828; --site-muted:#667085; --site-card:#ffffff; --site-border:rgba(16,24,40,0.12); --site-radius:18px; --site-nav-bg:#ffffff; --site-nav-text:#101828; --site-hero-bg:linear-gradient(135deg, color-mix(in srgb, var(--site-primary) 86%, white), #111827); --site-hero-text:#ffffff; --site-hero-muted:#ffffff; --site-visual-bg:linear-gradient(135deg, rgba(255,255,255,0.35), rgba(255,255,255,0.08)); --site-gallery-bg:linear-gradient(135deg, var(--site-primary), #dbeafe); --site-gallery-bg-2:linear-gradient(135deg, #111827, var(--site-primary)); --site-gallery-bg-3:linear-gradient(135deg, #eef2ff, var(--site-primary)); --site-card-shadow:0 10px 30px rgba(16,24,40,0.08); }
+    .website-preview.style-luxury { --site-font:'Lora',serif; --site-heading:'Playfair Display',serif; --site-bg:#0d0b08; --site-bg-soft:#17130e; --site-text:#fff7e6; --site-muted:#d7c6a1; --site-card:#15110c; --site-border:rgba(218,165,32,0.28); --site-radius:10px; --site-primary:#c89b3c; --site-nav-bg:#090806; --site-nav-text:#fff7e6; --site-hero-bg:radial-gradient(circle at 25% 20%, rgba(200,155,60,0.34), transparent 32%), linear-gradient(135deg, #090806, #1e160b); --site-hero-text:#fff7e6; --site-hero-muted:#d7c6a1; --site-visual-bg:linear-gradient(135deg,#2b2112,#c89b3c); --site-gallery-bg:linear-gradient(135deg,#1e160b,#c89b3c); --site-gallery-bg-2:linear-gradient(135deg,#090806,#403016); --site-gallery-bg-3:linear-gradient(135deg,#c89b3c,#fff0bd); --site-btn-radius:4px; --site-card-shadow:0 14px 35px rgba(0,0,0,0.35); }
+    .website-preview.style-minimal { --site-font:'Inter',sans-serif; --site-heading:'Inter',sans-serif; --site-bg:#fbfaf7; --site-bg-soft:#f0eee8; --site-text:#1b1b1b; --site-muted:#6d6a63; --site-card:#fbfaf7; --site-border:rgba(0,0,0,0.12); --site-radius:2px; --site-nav-bg:#fbfaf7; --site-nav-text:#1b1b1b; --site-hero-bg:#fbfaf7; --site-hero-text:#1b1b1b; --site-hero-muted:#6d6a63; --site-kicker-bg:transparent; --site-kicker-text:var(--site-primary); --site-visual-bg:#e9e4da; --site-gallery-bg:#ded8cc; --site-gallery-bg-2:#cfc7b7; --site-gallery-bg-3:#eee9df; --site-btn-radius:2px; --site-card-shadow:none; }
+    .website-preview.style-bold { --site-font:'Montserrat',sans-serif; --site-heading:'Montserrat',sans-serif; --site-bg:#fff; --site-bg-soft:#f1f1f1; --site-text:#080808; --site-muted:#4b4b4b; --site-card:#ffffff; --site-border:#080808; --site-radius:0px; --site-nav-bg:#080808; --site-nav-text:#ffffff; --site-hero-bg:linear-gradient(135deg, var(--site-primary) 0 55%, #080808 55% 100%); --site-hero-text:#ffffff; --site-hero-muted:#ffffff; --site-visual-bg:repeating-linear-gradient(45deg, #fff 0 12px, rgba(255,255,255,0.45) 12px 24px); --site-gallery-bg:var(--site-primary); --site-gallery-bg-2:#080808; --site-gallery-bg-3:#ffffff; --site-btn-radius:0px; --site-card-shadow:7px 7px 0 #080808; --site-btn-shadow:5px 5px 0 rgba(0,0,0,0.38); }
+    .website-preview.style-creative { --site-font:'Poppins',sans-serif; --site-heading:'Poppins',sans-serif; --site-bg:#fff8fb; --site-bg-soft:#fff0f6; --site-text:#20131b; --site-muted:#765c6b; --site-card:#ffffff; --site-border:rgba(32,19,27,0.08); --site-radius:28px; --site-nav-bg:#fff8fb; --site-nav-text:#20131b; --site-hero-bg:radial-gradient(circle at 15% 25%, #ffe66d, transparent 25%), radial-gradient(circle at 80% 20%, color-mix(in srgb, var(--site-primary) 65%, white), transparent 30%), linear-gradient(135deg, #7b2ff7, var(--site-primary)); --site-hero-text:#ffffff; --site-hero-muted:#ffffff; --site-visual-bg:linear-gradient(135deg,#ffe66d,var(--site-primary),#7b2ff7); --site-gallery-bg:linear-gradient(135deg,#ffe66d,var(--site-primary)); --site-gallery-bg-2:linear-gradient(135deg,#7b2ff7,#00d4ff); --site-gallery-bg-3:linear-gradient(135deg,#00f5a0,#ffe66d); --site-card-shadow:0 18px 35px rgba(123,47,247,0.13); }
+
+    .website-preview.industry-restaurant { --site-primary:#b6422c; --site-accent:#f4c16e; }
+    .website-preview.industry-landscaping { --site-primary:#2f7d32; --site-accent:#b7e08a; }
+    .website-preview.industry-architecture { --site-primary:#3f4f5f; --site-accent:#d8c7a3; }
+    .website-preview.industry-contractor { --site-primary:#d97706; --site-accent:#fde68a; }
+    .website-preview.industry-pressure { --site-primary:#0ea5e9; --site-accent:#bae6fd; }
+    .website-preview.industry-barber { --site-primary:#b88a44; --site-accent:#e8d1a0; }
+    .website-preview.industry-store { --site-primary:#6d28d9; --site-accent:#ddd6fe; }
+    .website-preview.industry-detailing { --site-primary:#2563eb; --site-accent:#bfdbfe; }
+    .website-preview.industry-gym { --site-primary:#ef4444; --site-accent:#fecaca; }
+    .website-preview.industry-coffee { --site-primary:#8b5a2b; --site-accent:#e7c8a0; }
+
+    .price-box { margin-top: 22px; }
+    .price-box strong { color: #ff4d73; }
+    .note { margin-top: 22px; color: #ddd; border-left: 5px solid #e60039; }
+    .note strong { color: white; }
+    .btn { display: inline-block; background: #e60039; color: white; padding: 14px 24px; border-radius: 999px; text-decoration: none; margin-top: 22px; font-weight: 800; transition: 0.3s ease; }
+    .btn:hover { background: #ff1a53; transform: translateY(-3px); box-shadow: 0 0 18px rgba(230, 0, 57, 0.35); }
+
+    @media (max-width: 980px) {
+      .builder-grid { grid-template-columns: 1fr; }
+      .preview-shell { position: static; }
+    }
+
+    @media (max-width: 768px) {
+      .navbar { flex-direction: row; justify-content: center; align-items: center; padding: 14px 5%; height: 82px; }
+      .menu-wrapper { position: absolute; left: 5%; top: 50%; transform: translateY(-50%); }
+      .menu-btn { padding: 10px 14px; font-size: 0.85rem; }
+      .brand { position: absolute; left: 50%; transform: translateX(-50%); }
+      .brand img { width: 72px; }
+      .nav-link-btn { position: absolute; right: 5%; top: 50%; transform: translateY(-50%); padding: 10px 13px; font-size: 0.78rem; white-space: nowrap; }
+      .dropdown-menu { top: 62px; left: 0; right: auto; width: 220px; }
+      .builder-hero { min-height: 430px; padding: 125px 6% 55px; }
+      .container { padding: 45px 14px 75px; }
+      .panel, .price-box, .note { padding: 22px; }
+      .checkbox-grid { grid-template-columns: 1fr; }
+      .preview-tools { align-items: flex-start; flex-direction: column; }
+      .site-hero { grid-template-columns: 1fr; padding: 46px 22px; text-align: center; }
+      .site-actions { justify-content: center; }
+      .site-card-grid, .product-grid, .gallery-grid, .reviews-wrap { grid-template-columns: 1fr; }
+      .site-cta { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="navbar">
+  <nav class="menu-wrapper">
+    <button class="menu-btn" onclick="toggleMenu()">Menu ▾</button>
+    <div class="dropdown-menu">
+      <a href="index.html#home">🏠 Home</a>
+      <a href="index.html#vision">🎯 Vision</a>
+      <a href="index.html#services">🎨 Services</a>
+      <a href="builder.html">🔧 Website Builder</a>
+      <a href="index.html#plans">💰 Pricing</a>
+      <a href="index.html#contact">📞 Contact</a>
+    </div>
+  </nav>
+
+  <div class="brand">
+    <a href="index.html#home"><img src="NavbarClear.png" alt="NSS Logo"></a>
+  </div>
+
+  <a href="faq.html" class="nav-link-btn">Questions?</a>
+</header>
+
+<section class="builder-hero">
+  <div class="hero-inner">
+    <span class="mini-label">Interactive NSS Website Studio</span>
+    <h1>Design Your Website Before We Build It</h1>
+    <p>
+      Choose your business type, change the style, switch layouts, add sections, and preview how your website could feel before scheduling your complimentary NSS consultation.
+    </p>
+  </div>
+</section>
+
+<main class="container">
+  <div class="builder-grid">
+    <div>
+      <section class="panel">
+        <h2>Project Setup</h2>
+        <p class="panel-subtext">Start with your package, business type, and basic website details.</p>
+
+        <label>Choose a Package</label>
+        <select id="package">
+          <option value="bare">Bare-Bones - $150 + $25/mo</option>
+          <option value="restaurant">Restaurant - $375 + $35/mo</option>
+          <option value="booking">Booking Services - $350 + $35/mo</option>
+          <option value="store">Online Web Store - $500 + $50/mo</option>
+        </select>
+
+        <label>Business Name</label>
+        <input type="text" id="businessName" placeholder="Your Business Name">
+
+        <label>Primary Color</label>
+        <input type="color" id="primaryColor" value="#e60039">
+
+        <label>Choose a Business Template</label>
+        <select id="template"></select>
+
+        <label>Category 1</label>
+        <input type="text" id="cat1" placeholder="Services">
+
+        <label>Category 2</label>
+        <input type="text" id="cat2" placeholder="Gallery">
+
+        <label>Category 3</label>
+        <input type="text" id="cat3" placeholder="Reviews">
+      </section>
+
+      <section class="panel">
+        <h2>Design Studio</h2>
+        <p class="panel-subtext">These controls change the full preview, not just the hero.</p>
+
+        <label>Website Style</label>
+        <div class="control-row" data-group="style">
+          <button type="button" class="studio-choice active" data-style="modern">Modern</button>
+          <button type="button" class="studio-choice" data-style="luxury">Luxury</button>
+          <button type="button" class="studio-choice" data-style="minimal">Minimal</button>
+          <button type="button" class="studio-choice" data-style="bold">Bold</button>
+          <button type="button" class="studio-choice" data-style="creative">Creative</button>
+        </div>
+
+        <label>Hero Layout</label>
+        <div class="control-row" data-group="layout">
+          <button type="button" class="studio-choice active" data-layout="split">Split Hero</button>
+          <button type="button" class="studio-choice" data-layout="centered">Centered</button>
+          <button type="button" class="studio-choice" data-layout="minimal">Minimal</button>
+          <button type="button" class="studio-choice" data-layout="video">Video Feel</button>
+        </div>
+
+        <label>Preview Sections</label>
+        <div class="checkbox-grid">
+          <label class="checkbox-row"><input type="checkbox" class="section-toggle" value="features" checked> Feature Cards</label>
+          <label class="checkbox-row"><input type="checkbox" class="section-toggle" value="gallery" checked> Gallery</label>
+          <label class="checkbox-row"><input type="checkbox" class="section-toggle" value="reviews" checked> Reviews</label>
+          <label class="checkbox-row"><input type="checkbox" class="section-toggle" value="products"> Products</label>
+          <label class="checkbox-row"><input type="checkbox" class="section-toggle" value="booking" checked> Booking CTA</label>
+          <label class="checkbox-row"><input type="checkbox" class="section-toggle" value="faq"> Mini FAQ</label>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Features & Estimate</h2>
+        <p class="panel-subtext">Select add-ons to estimate your starting project cost.</p>
+
+        <label>Extra Pages Beyond Package Limit</label>
+        <input type="number" id="pages" value="0" min="0">
+
+        <div class="checkbox-grid">
+          <label class="checkbox-row"><input type="checkbox" id="branding"> Business Branding +$100</label>
+          <label class="checkbox-row"><input type="checkbox" id="bookingSystem"> Booking System +$60</label>
+          <label class="checkbox-row"><input type="checkbox" id="thirdParty"> Third-Party Ordering +$45</label>
+          <label class="checkbox-row"><input type="checkbox" id="customOrdering"> Custom Ordering +$300</label>
+          <label class="checkbox-row"><input type="checkbox" id="seo"> Advanced SEO +$300</label>
+        </div>
+
+        <label>Animation Length</label>
+        <select id="animation">
+          <option value="0">No Animation - $0</option>
+          <option value="25">5 Seconds - $25</option>
+          <option value="50">10 Seconds - $50</option>
+          <option value="75">15 Seconds - $75</option>
+          <option value="150">30 Seconds - $150</option>
+          <option value="300">60 Seconds - $300</option>
+        </select>
+      </section>
+    </div>
+
+    <aside class="preview-shell">
+      <div class="preview-tools">
+        <h2>Live Preview</h2>
+        <div class="device-toggle control-row" data-group="device">
+          <button type="button" class="studio-choice active" data-device="desktop">Desktop</button>
+          <button type="button" class="studio-choice" data-device="mobile">Mobile</button>
+        </div>
+      </div>
+
+      <div class="preview-stage" id="previewStage">
+        <div class="website-preview style-modern industry-bare" id="websitePreview">
+          <div class="site-nav">
+            <strong class="site-brand" id="previewTitle">Your Business</strong>
+            <div class="site-links" id="previewLinks">Home · About · Contact</div>
+          </div>
+
+          <section class="site-hero split" id="siteHero">
+            <div>
+              <span class="site-kicker" id="siteKicker">Professional Website</span>
+              <h1 id="heroText">Welcome to Your Business</h1>
+              <p id="heroSubtext">A clean, modern website built to help your business earn trust and turn visitors into customers.</p>
+              <div class="site-actions">
+                <a href="#" class="site-btn" id="primaryCta">Get Started</a>
+                <a href="#" class="site-btn secondary" id="secondaryCta">View Services</a>
+              </div>
+            </div>
+            <div class="visual-card" aria-hidden="true"></div>
+          </section>
+
+          <section class="site-section alt" id="featuresSection">
+            <h2 id="sectionTitle">Featured Sections</h2>
+            <p class="section-lead" id="sectionLead">Highlight the most important parts of your business so visitors know what to do next.</p>
+            <div class="site-card-grid">
+              <div class="site-card"><strong id="card1">Services</strong><span id="card1Text">Clear details about what you offer.</span></div>
+              <div class="site-card"><strong id="card2">Gallery</strong><span id="card2Text">Show your work and build trust.</span></div>
+              <div class="site-card"><strong id="card3">Reviews</strong><span id="card3Text">Turn happy customers into proof.</span></div>
+            </div>
+          </section>
+
+          <section class="site-section" id="gallerySection">
+            <h2 id="galleryTitle">Project Gallery</h2>
+            <p class="section-lead">A visual section helps customers understand your style, quality, and experience.</p>
+            <div class="gallery-grid">
+              <div class="gallery-item"></div>
+              <div class="gallery-item"></div>
+              <div class="gallery-item"></div>
+            </div>
+          </section>
+
+          <section class="site-section alt" id="productsSection" style="display:none;">
+            <h2 id="productsTitle">Featured Products</h2>
+            <p class="section-lead">Use product cards for stores, menus, specials, packages, or featured services.</p>
+            <div class="product-grid">
+              <div class="product-card"><div class="product-img"></div><div class="product-info"><strong id="product1">Signature Item</strong><span>$25</span></div></div>
+              <div class="product-card"><div class="product-img"></div><div class="product-info"><strong id="product2">Popular Choice</strong><span>$40</span></div></div>
+              <div class="product-card"><div class="product-img"></div><div class="product-info"><strong id="product3">Premium Option</strong><span>$75</span></div></div>
+            </div>
+          </section>
+
+          <section class="site-section" id="reviewsSection">
+            <h2>Customer Reviews</h2>
+            <div class="reviews-wrap">
+              <div class="review">“Professional, quick, and easy to work with.” <b>— Local Customer</b></div>
+              <div class="review">“The website made our business look more trustworthy.” <b>— Business Owner</b></div>
+            </div>
+          </section>
+
+          <section class="site-section alt" id="faqSection" style="display:none;">
+            <h2>Common Questions</h2>
+            <div class="site-card-grid">
+              <div class="site-card"><strong>How do I book?</strong><span>Use the booking button or contact form.</span></div>
+              <div class="site-card"><strong>Where are you located?</strong><span>Add your service area or address.</span></div>
+              <div class="site-card"><strong>Do you offer quotes?</strong><span>Let visitors request pricing directly.</span></div>
+            </div>
+          </section>
+
+          <section class="site-cta" id="bookingSection">
+            <div>
+              <h2 id="ctaTitle">Ready to get started?</h2>
+              <p id="ctaText">Make it easy for visitors to contact you, book, order, or request a quote.</p>
+            </div>
+            <a href="#" class="site-btn" id="ctaButton">Contact Us</a>
+          </section>
+        </div>
+      </div>
+
+      <div class="price-box">
+        <h2>Estimated Website Cost</h2>
+        <p>Website Cost: <strong>$<span id="total">150</span></strong></p>
+        <p>Monthly Maintenance: <strong>$<span id="monthly">25</span>/mo</strong></p>
+      </div>
+
+      <div class="note">
+        <strong>Estimate note:</strong>
+        <p>Your estimate is for planning purposes. Every NSS project receives a complimentary consultation and custom review before pricing is finalized.</p>
+        <a href="https://calendly.com/bouch-anwar19/30min" class="btn" target="_blank" rel="noopener noreferrer">Claim Your Complimentary Preview</a>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<script>
+function toggleMenu() {
+  document.querySelector(".dropdown-menu").classList.toggle("show");
+}
+
+const packageSelect = document.getElementById("package");
+const templateSelect = document.getElementById("template");
+const businessName = document.getElementById("businessName");
+const primaryColor = document.getElementById("primaryColor");
+const cat1 = document.getElementById("cat1");
+const cat2 = document.getElementById("cat2");
+const cat3 = document.getElementById("cat3");
+const pagesInput = document.getElementById("pages");
+const branding = document.getElementById("branding");
+const bookingSystem = document.getElementById("bookingSystem");
+const thirdParty = document.getElementById("thirdParty");
+const customOrdering = document.getElementById("customOrdering");
+const seo = document.getElementById("seo");
+const animation = document.getElementById("animation");
+const totalDisplay = document.getElementById("total");
+const monthlyDisplay = document.getElementById("monthly");
+
+const previewStage = document.getElementById("previewStage");
+const websitePreview = document.getElementById("websitePreview");
+const previewTitle = document.getElementById("previewTitle");
+const previewLinks = document.getElementById("previewLinks");
+const siteHero = document.getElementById("siteHero");
+const siteKicker = document.getElementById("siteKicker");
+const heroText = document.getElementById("heroText");
+const heroSubtext = document.getElementById("heroSubtext");
+const primaryCta = document.getElementById("primaryCta");
+const secondaryCta = document.getElementById("secondaryCta");
+const sectionTitle = document.getElementById("sectionTitle");
+const sectionLead = document.getElementById("sectionLead");
+const card1 = document.getElementById("card1");
+const card2 = document.getElementById("card2");
+const card3 = document.getElementById("card3");
+const card1Text = document.getElementById("card1Text");
+const card2Text = document.getElementById("card2Text");
+const card3Text = document.getElementById("card3Text");
+const galleryTitle = document.getElementById("galleryTitle");
+const productsTitle = document.getElementById("productsTitle");
+const product1 = document.getElementById("product1");
+const product2 = document.getElementById("product2");
+const product3 = document.getElementById("product3");
+const ctaTitle = document.getElementById("ctaTitle");
+const ctaText = document.getElementById("ctaText");
+const ctaButton = document.getElementById("ctaButton");
+
+let currentStyle = "modern";
+let currentLayout = "split";
+let currentDevice = "desktop";
+
+const templates = {
+  bare: [
+    { value: "bare", text: "Blank Canvas" },
+    { value: "contractor", text: "Contractor" },
+    { value: "detailing", text: "Auto Detailing" },
+    { value: "gym", text: "Fitness / Gym" },
+    { value: "coffee", text: "Coffee Shop" }
+  ],
+  restaurant: [
+    { value: "restaurant", text: "Restaurant" },
+    { value: "coffee", text: "Coffee Shop" }
+  ],
+  booking: [
+    { value: "landscaping", text: "Landscaping" },
+    { value: "architecture", text: "Architecture" },
+    { value: "contractor", text: "Contractor" },
+    { value: "pressure", text: "Pressure Washing" },
+    { value: "barber", text: "Barbershop" },
+    { value: "detailing", text: "Auto Detailing" },
+    { value: "gym", text: "Fitness / Gym" }
+  ],
+  store: [
+    { value: "store", text: "Online Store" }
+  ]
+};
+
+const templateContent = {
+  bare: {
+    links: "Home · About · Services · Contact",
+    kicker: "Professional Website",
+    hero: name => `Welcome to ${name}`,
+    sub: "A clean, modern website designed to help your business look trustworthy online.",
+    section: "Core Website Sections",
+    lead: "Give visitors the information they need and a clear reason to contact you.",
+    cards: ["Services", "About", "Contact"],
+    cardText: ["Explain what you offer.", "Tell your story.", "Make next steps easy."],
+    gallery: "Brand Preview",
+    products: ["Starter Service", "Popular Service", "Premium Service"],
+    cta: "Ready to work together?",
+    ctaText: "Make it simple for visitors to contact your business.",
+    ctaButton: "Contact Us"
+  },
+  restaurant: {
+    links: "Home · Menu · Gallery · Order",
+    kicker: "Fresh Flavor",
+    hero: name => `Fresh Flavor at ${name}`,
+    sub: "Show your menu, highlight popular dishes, and make online ordering easy.",
+    section: "Restaurant Features",
+    lead: "A restaurant site should make people hungry and move them toward ordering or visiting.",
+    cards: ["Menu", "Gallery", "Reviews"],
+    cardText: ["Feature your best dishes.", "Show atmosphere and food.", "Build trust with guests."],
+    gallery: "Food & Dining Gallery",
+    products: ["Signature Plate", "Lunch Special", "Family Combo"],
+    cta: "Hungry yet?",
+    ctaText: "Guide visitors toward ordering, calling, or finding your location.",
+    ctaButton: "Order Online"
+  },
+  landscaping: {
+    links: "Home · Services · Gallery · Quote",
+    kicker: "Outdoor Transformation",
+    hero: () => "Transform Your Outdoor Space",
+    sub: name => `${name} can showcase lawns, patios, cleanups, and outdoor projects with a strong visual layout.`,
+    section: "Landscaping Features",
+    lead: "Show before-and-after work, service areas, and a quote request path.",
+    cards: ["Before & After", "Quote Form", "Service Areas"],
+    cardText: ["Show visible results.", "Capture new leads.", "Clarify where you work."],
+    gallery: "Outdoor Project Gallery",
+    products: ["Lawn Care", "Mulch Installation", "Seasonal Cleanup"],
+    cta: "Need a better outdoor space?",
+    ctaText: "Let visitors request a quote without hunting for your contact info.",
+    ctaButton: "Request Quote"
+  },
+  architecture: {
+    links: "Projects · Services · Studio · Contact",
+    kicker: "Design With Purpose",
+    hero: () => "Designing Spaces With Purpose",
+    sub: name => `${name} can present projects, process, and consultation details with a polished portfolio feel.`,
+    section: "Architecture Features",
+    lead: "A portfolio-style site should feel refined, spacious, and easy to explore.",
+    cards: ["Projects", "Process", "Consultation"],
+    cardText: ["Highlight finished work.", "Explain your approach.", "Invite serious inquiries."],
+    gallery: "Project Portfolio",
+    products: ["Residential", "Commercial", "Consultation"],
+    cta: "Planning a new project?",
+    ctaText: "Help visitors understand your process and start a consultation.",
+    ctaButton: "Book Consultation"
+  },
+  contractor: {
+    links: "Home · Services · Projects · Contact",
+    kicker: "Reliable Service",
+    hero: () => "Reliable Contracting Services",
+    sub: name => `${name} can highlight services, completed projects, reviews, and quote requests in one place.`,
+    section: "Contractor Features",
+    lead: "Build confidence by showing services, results, and simple contact options.",
+    cards: ["Services", "Projects", "Reviews"],
+    cardText: ["List your specialties.", "Show completed jobs.", "Add social proof."],
+    gallery: "Completed Projects",
+    products: ["Repair Work", "Renovation", "Custom Project"],
+    cta: "Have a project in mind?",
+    ctaText: "Make it easy to request a quote or discuss the job.",
+    ctaButton: "Get a Quote"
+  },
+  pressure: {
+    links: "Home · Services · Results · Book",
+    kicker: "Professional Cleaning",
+    hero: () => "Powerful Cleaning. Professional Results.",
+    sub: name => `${name} can show dramatic before-and-after results and help customers book quickly.`,
+    section: "Pressure Washing Features",
+    lead: "This style works well for strong visuals, service packages, and booking requests.",
+    cards: ["Before & After", "Packages", "Book Now"],
+    cardText: ["Show the difference.", "Organize service levels.", "Turn interest into action."],
+    gallery: "Cleaning Results",
+    products: ["Driveways", "Siding", "Patios"],
+    cta: "Ready for a cleaner property?",
+    ctaText: "Let customers schedule or request an estimate quickly.",
+    ctaButton: "Book Service"
+  },
+  barber: {
+    links: "Home · Services · Barbers · Book",
+    kicker: "Fresh Cuts",
+    hero: () => "Fresh Cuts. Easy Booking.",
+    sub: name => `${name} can feature services, barbers, appointment booking, and customer reviews.`,
+    section: "Barbershop Features",
+    lead: "A barbershop site should feel stylish, quick, and appointment-focused.",
+    cards: ["Haircuts", "Barbers", "Booking"],
+    cardText: ["Show your services.", "Introduce the team.", "Make booking easy."],
+    gallery: "Cuts & Style Gallery",
+    products: ["Haircut", "Beard Trim", "Full Service"],
+    cta: "Need a fresh cut?",
+    ctaText: "Move visitors straight into booking their next appointment.",
+    ctaButton: "Book Now"
+  },
+  store: {
+    links: "Home · Shop · Products · Cart",
+    kicker: "Online Store",
+    hero: name => `Shop ${name}`,
+    sub: "Show products, highlight collections, and create a smoother shopping experience.",
+    section: "Store Features",
+    lead: "An online store should make products easy to browse, compare, and purchase.",
+    cards: ["Products", "Cart", "Checkout"],
+    cardText: ["Display items clearly.", "Help customers review orders.", "Simplify purchasing."],
+    gallery: "Featured Collections",
+    products: ["New Arrival", "Best Seller", "Premium Pick"],
+    cta: "Ready to shop?",
+    ctaText: "Guide customers toward browsing products or checking out.",
+    ctaButton: "Shop Now"
+  },
+  detailing: {
+    links: "Home · Services · Results · Book",
+    kicker: "Premium Auto Care",
+    hero: name => `Detailing That Makes ${name || "Your Car"} Shine`,
+    sub: "Show packages, transformations, and appointment options with a premium service feel.",
+    section: "Detailing Features",
+    lead: "Great for before-and-after photos, package pricing, and appointment requests.",
+    cards: ["Packages", "Results", "Appointments"],
+    cardText: ["Compare service tiers.", "Show clean finishes.", "Book customers faster."],
+    gallery: "Before & After Gallery",
+    products: ["Interior Detail", "Exterior Wash", "Full Detail"],
+    cta: "Want your car looking new?",
+    ctaText: "Let visitors choose a package and request a time.",
+    ctaButton: "Book Detail"
+  },
+  gym: {
+    links: "Home · Programs · Trainers · Join",
+    kicker: "Train Stronger",
+    hero: () => "Build Strength. Stay Consistent.",
+    sub: name => `${name} can promote memberships, classes, trainers, and signups with an energetic layout.`,
+    section: "Fitness Features",
+    lead: "A fitness site should feel active, motivating, and focused on joining or booking.",
+    cards: ["Programs", "Trainers", "Memberships"],
+    cardText: ["Show training options.", "Introduce coaches.", "Promote signups."],
+    gallery: "Training Gallery",
+    products: ["Day Pass", "Monthly Plan", "Personal Training"],
+    cta: "Ready to start training?",
+    ctaText: "Push visitors toward joining, booking, or requesting info.",
+    ctaButton: "Join Now"
+  },
+  coffee: {
+    links: "Home · Menu · Story · Visit",
+    kicker: "Freshly Brewed",
+    hero: name => `Coffee, Comfort, and Community at ${name}`,
+    sub: "Create a warm online presence for your menu, atmosphere, and location.",
+    section: "Coffee Shop Features",
+    lead: "A coffee shop site should feel welcoming and make visitors want to stop by.",
+    cards: ["Menu", "Hours", "Location"],
+    cardText: ["Feature drinks and bites.", "Show when you're open.", "Help people find you."],
+    gallery: "Cafe Atmosphere",
+    products: ["Latte", "Cold Brew", "Pastry Box"],
+    cta: "Stop by today?",
+    ctaText: "Make hours, menu, and location easy to find.",
+    ctaButton: "View Menu"
+  }
+};
+
+function updateTemplateOptions() {
+  const selectedPackage = packageSelect.value;
+  templateSelect.innerHTML = "";
+
+  templates[selectedPackage].forEach(template => {
+    const option = document.createElement("option");
+    option.value = template.value;
+    option.textContent = template.text;
+    templateSelect.appendChild(option);
+  });
+
+  if (selectedPackage === "bare") {
+    bookingSystem.checked = false;
+    thirdParty.checked = false;
+    customOrdering.checked = false;
+  }
+  if (selectedPackage === "restaurant") thirdParty.checked = true;
+  if (selectedPackage === "store") customOrdering.checked = true;
+
+  updateCalculator();
+}
+
+function updateCalculator() {
+  let total = 0;
+  let monthly = 0;
+
+  if (packageSelect.value === "bare") { total = 150; monthly = 25; }
+  if (packageSelect.value === "restaurant") { total = 375; monthly = 35; }
+  if (packageSelect.value === "booking") { total = 350; monthly = 35; }
+  if (packageSelect.value === "store") { total = 500; monthly = 50; }
+
+  total += Number(pagesInput.value) * 50;
+  total += Number(animation.value);
+
+  const brandingIncluded = ["restaurant", "booking", "store"].includes(packageSelect.value);
+  if (branding.checked && !brandingIncluded) total += 100;
+  if (bookingSystem.checked) total += 60;
+  if (thirdParty.checked && packageSelect.value !== "restaurant") total += 45;
+  if (customOrdering.checked && packageSelect.value !== "store") total += 300;
+  if (seo.checked) total += 300;
+
+  totalDisplay.textContent = total;
+  monthlyDisplay.textContent = monthly;
+  updatePreview();
+}
+
+function updatePreview() {
+  const name = businessName.value || "Your Business";
+  const color = primaryColor.value;
+  const template = templateSelect.value || "bare";
+  const content = templateContent[template] || templateContent.bare;
+
+  websitePreview.className = `website-preview style-${currentStyle} industry-${template}`;
+  websitePreview.style.setProperty("--site-primary", color);
+
+  previewTitle.textContent = name;
+  previewLinks.textContent = content.links;
+  siteKicker.textContent = content.kicker;
+  heroText.textContent = typeof content.hero === "function" ? content.hero(name) : content.hero;
+  heroSubtext.textContent = typeof content.sub === "function" ? content.sub(name) : content.sub;
+  primaryCta.textContent = content.ctaButton;
+  secondaryCta.textContent = template === "store" ? "View Products" : template === "restaurant" || template === "coffee" ? "View Menu" : "View Work";
+  sectionTitle.textContent = content.section;
+  sectionLead.textContent = content.lead;
+
+  card1.textContent = cat1.value || content.cards[0];
+  card2.textContent = cat2.value || content.cards[1];
+  card3.textContent = cat3.value || content.cards[2];
+  card1Text.textContent = content.cardText[0];
+  card2Text.textContent = content.cardText[1];
+  card3Text.textContent = content.cardText[2];
+  galleryTitle.textContent = content.gallery;
+  productsTitle.textContent = template === "restaurant" || template === "coffee" ? "Featured Menu Items" : template === "store" ? "Featured Products" : "Popular Services";
+  product1.textContent = content.products[0];
+  product2.textContent = content.products[1];
+  product3.textContent = content.products[2];
+  ctaTitle.textContent = content.cta;
+  ctaText.textContent = content.ctaText;
+  ctaButton.textContent = content.ctaButton;
+
+  siteHero.className = `site-hero ${currentLayout}`;
+  previewStage.classList.toggle("mobile-mode", currentDevice === "mobile");
+
+  document.querySelectorAll(".section-toggle").forEach(toggle => {
+    const section = document.getElementById(`${toggle.value}Section`);
+    if (section) section.style.display = toggle.checked ? "" : "none";
+  });
+}
+
+function setActiveButton(button, selector) {
+  document.querySelectorAll(selector).forEach(btn => btn.classList.remove("active"));
+  button.classList.add("active");
+}
+
+document.querySelectorAll("[data-style]").forEach(btn => {
+  btn.addEventListener("click", () => {
+    currentStyle = btn.dataset.style;
+    setActiveButton(btn, "[data-style]");
+    updatePreview();
+  });
+});
+
+document.querySelectorAll("[data-layout]").forEach(btn => {
+  btn.addEventListener("click", () => {
+    currentLayout = btn.dataset.layout;
+    setActiveButton(btn, "[data-layout]");
+    updatePreview();
+  });
+});
+
+document.querySelectorAll("[data-device]").forEach(btn => {
+  btn.addEventListener("click", () => {
+    currentDevice = btn.dataset.device;
+    setActiveButton(btn, "[data-device]");
+    updatePreview();
+  });
+});
+
+document.querySelectorAll("select, input").forEach(item => {
+  item.addEventListener("change", updateCalculator);
+  item.addEventListener("input", updateCalculator);
+});
+
+document.querySelectorAll(".section-toggle").forEach(item => {
+  item.addEventListener("change", updatePreview);
+});
+
+packageSelect.addEventListener("change", updateTemplateOptions);
+templateSelect.addEventListener("change", updatePreview);
+
+updateTemplateOptions();
+</script>
+
+</body>
+</html>
