@@ -801,6 +801,32 @@ nav a:hover {
   box-shadow: 0 0 15px rgba(230,0,57,0.35);
 }
 
+.faq-nav-btn {
+  position: absolute;
+  right: 8%;
+  top: 50%;
+  transform: translateY(-50%);
+
+  text-decoration: none;
+  color: white;
+
+  padding: 12px 20px;
+  border-radius: 30px;
+
+  border: 1px solid rgba(230, 0, 57, 0.35);
+  background: rgba(255,255,255,0.05);
+
+  font-weight: 600;
+
+  transition: all 0.3s ease;
+}
+
+.faq-nav-btn:hover {
+  background: #e60039;
+  transform: translateY(-50%) translateY(-2px);
+  box-shadow: 0 0 15px rgba(230,0,57,0.35);
+}
+
 /* Scroll animation */
 .reveal-card {
   opacity: 0;
