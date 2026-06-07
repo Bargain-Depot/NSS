@@ -777,6 +777,30 @@ nav a:hover {
   transform: translateY(-2px);
 }
 
+.nav-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.faq-nav-btn {
+  text-decoration: none;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 30px;
+  border: 1px solid rgba(230, 0, 57, 0.35);
+  background: rgba(255,255,255,0.05);
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.faq-nav-btn:hover {
+  background: #e60039;
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(230,0,57,0.35);
+}
+
 /* Scroll animation */
 .reveal-card {
   opacity: 0;
