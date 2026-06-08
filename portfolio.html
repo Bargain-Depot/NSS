@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Website Portfolio | Industry Website Concepts | Nouri Site Services</title>
+  <meta
+    name="description"
+    content="Explore upcoming website concepts and industry showcases from Nouri Site Services. Custom website previews for restaurants, landscapers, barbers, contractors, online stores, and more."
+  />
+  <link rel="canonical" href="https://bargain-depot.github.io/NSS/portfolio.html" />
+
+  <meta property="og:title" content="Website Portfolio | Nouri Site Services" />
+  <meta
+    property="og:description"
+    content="Explore upcoming NSS website concepts designed around real business goals, industries, and customer experiences."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://bargain-depot.github.io/NSS/portfolio.html" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Website Portfolio | Nouri Site Services" />
+  <meta
+    name="twitter:description"
+    content="Explore upcoming NSS website concepts designed around real business goals, industries, and customer experiences."
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .portfolio-hero {
+      min-height: 78vh;
+      padding: 150px 8% 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background:
+        radial-gradient(circle at top, rgba(230, 0, 57, 0.28), transparent 38%),
+        radial-gradient(circle at bottom left, rgba(255, 26, 83, 0.12), transparent 35%),
+        linear-gradient(180deg, #120005, #000000 70%);
+      border-bottom: 1px solid rgba(230, 0, 57, 0.28);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .portfolio-hero::before {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: rgba(230, 0, 57, 0.08);
+      filter: blur(8px);
+      top: -160px;
+      right: -120px;
+    }
+
+    .portfolio-hero-content {
+      max-width: 900px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .portfolio-pill {
+      display: inline-block;
+      padding: 9px 18px;
+      border-radius: 999px;
+      background: rgba(230, 0, 57, 0.16);
+      border: 1px solid rgba(230, 0, 57, 0.35);
+      color: #ff4d73;
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin-bottom: 20px;
+    }
+
+    .portfolio-hero h1,
+    .portfolio-section h2,
+    .portfolio-card h3,
+    .portfolio-cta h2,
+    .portfolio-process-card h3 {
+      font-family: 'Senilita', sans-serif;
+      letter-spacing: 1px;
+    }
+
+    .portfolio-hero h1 {
+      font-size: clamp(2.7rem, 7vw, 5.4rem);
+      line-height: 1;
+      margin-bottom: 22px;
+    }
+
+    .portfolio-hero p {
+      max-width: 780px;
+      margin: 0 auto 32px;
+      color: #ddd;
+      font-size: 1.08rem;
+      line-height: 1.8;
+    }
+
+    .portfolio-actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .secondary-btn {
+      display: inline-block;
+      border: 1px solid rgba(230, 0, 57, 0.45);
+      color: white;
+      padding: 14px 28px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: 0.3s ease;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .secondary-btn:hover {
+      background: rgba(230, 0, 57, 0.15);
+      transform: translateY(-3px);
+      box-shadow: 0 0 18px rgba(230, 0, 57, 0.25);
+    }
+
+    .portfolio-section {
+      padding: 100px 8%;
+      background: #080004;
+    }
+
+    .portfolio-section.alt {
+      background: #000;
+    }
+
+    .portfolio-heading {
+      text-align: center;
+      max-width: 850px;
+      margin: 0 auto 55px;
+    }
+
+    .portfolio-heading h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      margin-bottom: 14px;
+    }
+
+    .portfolio-heading p {
+      color: #bbb;
+      line-height: 1.8;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1180px;
+      margin: auto;
+    }
+
+    .portfolio-card {
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 28px;
+      border-radius: 26px;
+      background:
+        radial-gradient(circle at top right, rgba(230, 0, 57, 0.18), transparent 32%),
+        linear-gradient(180deg, #1a0006, #000000);
+      border: 1px solid rgba(230, 0, 57, 0.34);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.25);
+      position: relative;
+      overflow: hidden;
+      transition: 0.3s ease;
+    }
+
+    .portfolio-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 0 30px rgba(230, 0, 57, 0.28);
+    }
+
+    .portfolio-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.08), transparent);
+      transform: translateX(-110%);
+      transition: 0.7s ease;
+      pointer-events: none;
+    }
+
+    .portfolio-card:hover::before {
+      transform: translateX(110%);
+    }
+
+    .portfolio-icon {
+      width: 58px;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 18px;
+      background: rgba(230, 0, 57, 0.14);
+      border: 1px solid rgba(230, 0, 57, 0.3);
+      font-size: 1.75rem;
+      margin-bottom: 22px;
+    }
+
+    .portfolio-card h3 {
+      font-size: 1.85rem;
+      margin-bottom: 12px;
+    }
+
+    .portfolio-card p {
+      color: #cfcfcf;
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+
+    .portfolio-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 20px 0 24px;
+    }
+
+    .portfolio-tags span {
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(230, 0, 57, 0.22);
+      color: #ddd;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+
+    .coming-soon {
+      color: #ff4d73;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 14px;
+      display: inline-block;
+    }
+
+    .disabled-demo-btn {
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.07);
+      color: #aaa;
+      text-decoration: none;
+      font-weight: 700;
+      border: 1px solid rgba(255,255,255,0.1);
+      cursor: not-allowed;
+    }
+
+    .portfolio-process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+      max-width: 1180px;
+      margin: auto;
+    }
+
+    .portfolio-process-card {
+      padding: 28px;
+      border-radius: 24px;
+      background: linear-gradient(180deg, #1a0006, #000000);
+      border: 1px solid rgba(230, 0, 57, 0.3);
+      text-align: center;
+      transition: 0.3s ease;
+    }
+
+    .portfolio-process-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 24px rgba(230, 0, 57, 0.22);
+    }
+
+    .portfolio-process-card span {
+      display: inline-block;
+      color: #ff4d73;
+      font-weight: 800;
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+    }
+
+    .portfolio-process-card h3 {
+      margin-bottom: 10px;
+      font-size: 1.35rem;
+    }
+
+    .portfolio-process-card p {
+      color: #bbb;
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    .portfolio-cta {
+      max-width: 950px;
+      margin: auto;
+      padding: 55px 35px;
+      text-align: center;
+      border-radius: 30px;
+      background:
+        radial-gradient(circle at top right, rgba(230, 0, 57, 0.3), transparent 35%),
+        linear-gradient(135deg, #160007, #000000);
+      border: 1px solid rgba(230, 0, 57, 0.35);
+      box-shadow: 0 20px 55px rgba(230, 0, 57, 0.18);
+    }
+
+    .portfolio-cta h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 15px;
+    }
+
+    .portfolio-cta p {
+      max-width: 700px;
+      margin: 0 auto 28px;
+      color: #ddd;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 1000px) {
+      .portfolio-grid,
+      .portfolio-process-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 700px) {
+      .portfolio-hero {
+        min-height: auto;
+        padding: 125px 6% 65px;
+      }
+
+      .portfolio-section {
+        padding: 75px 6%;
+      }
+
+      .portfolio-grid,
+      .portfolio-process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .portfolio-card {
+        min-height: auto;
+      }
+
+      .portfolio-actions {
+        flex-direction: column;
+      }
+
+      .portfolio-actions .btn,
+      .portfolio-actions .secondary-btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header class="navbar">
+  <nav class="menu-wrapper">
+    <button class="menu-btn" onclick="toggleMenu()">
+      Menu ▾
+    </button>
+
+    <div class="dropdown-menu">
+      <a href="index.html#home">🏠 Home</a>
+      <a href="index.html#vision">🎯 Vision</a>
+      <a href="index.html#services">🎨 Services</a>
+      <a href="builder.html">🔧 Website Builder</a>
+      <a href="portfolio.html">🖥️ Portfolio</a>
+      <a href="faq.html">❓ FAQ</a>
+      <a href="index.html#plans">💰 Pricing</a>
+      <a href="index.html#contact">📞 Contact</a>
+    </div>
+  </nav>
+
+  <div class="brand">
+    <a href="index.html#home">
+      <img src="NavbarClear.png" alt="NSS Logo">
+    </a>
+  </div>
+
+  <a href="builder.html" class="faq-nav-btn">
+    Build Yours
+  </a>
+</header>
+
+<section class="portfolio-hero">
+  <div class="portfolio-hero-content reveal">
+    <span class="portfolio-pill">NSS Website Portfolio</span>
+    <h1>Website Concepts Built Around Business Goals</h1>
+    <p>
+      This portfolio will showcase custom website concepts created for different industries,
+      customer journeys, and business needs. Each design will be carefully built to feel unique,
+      useful, and ready to inspire your own complimentary website preview.
+    </p>
+
+    <div class="portfolio-actions">
+      <a href="builder.html" class="btn">Build Your Website</a>
+      <a href="https://calendly.com/bouch-anwar19/30min" class="secondary-btn" target="_blank" rel="noopener noreferrer">
+        Schedule Consultation
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="portfolio-section">
+  <div class="portfolio-heading reveal">
+    <h2>Upcoming Industry Showcases</h2>
+    <p>
+      These portfolio slots are intentionally left as upcoming concepts for now. As each demo is custom made,
+      you can replace the placeholder with a live project preview, screenshots, features, and a direct demo link.
+    </p>
+  </div>
+
+  <div class="portfolio-grid">
+    <article class="portfolio-card reveal-card">
+      <div>
+        <div class="portfolio-icon">🌿</div>
+        <span class="coming-soon">Coming Soon</span>
+        <h3>Landscaping Website Concept</h3>
+        <p>
+          A future showcase for service-area businesses that need quote requests, project galleries,
+          before-and-after sections, and clear mobile calls-to-action.
+        </p>
+        <div class="portfolio-tags">
+          <span>Quote Form</span>
+          <span>Gallery</span>
+          <span>Service Areas</span>
+          <span>Mobile CTA</span>
+        </div>
+      </div>
+      <span class="disabled-demo-btn">Demo In Progress</span>
+    </article>
+
+    <article class="portfolio-card reveal-card">
+      <div>
+        <div class="portfolio-icon">🍽️</div>
+        <span class="coming-soon">Coming Soon</span>
+        <h3>Restaurant Website Concept</h3>
+        <p>
+          A future concept for restaurants, cafés, bakeries, and food businesses that need menus,
+          ordering links, photo galleries, reviews, and local discovery.
+        </p>
+        <div class="portfolio-tags">
+          <span>Menu</span>
+          <span>Ordering</span>
+          <span>Reviews</span>
+          <span>Gallery</span>
+        </div>
+      </div>
+      <span class="disabled-demo-btn">Demo In Progress</span>
+    </article>
+
+    <article class="portfolio-card reveal-card">
+      <div>
+        <div class="portfolio-icon">✂️</div>
+        <span class="coming-soon">Coming Soon</span>
+        <h3>Barbershop Website Concept</h3>
+        <p>
+          A future showcase for appointment-based businesses that need booking, service menus,
+          staff profiles, social proof, and a premium local brand feel.
+        </p>
+        <div class="portfolio-tags">
+          <span>Booking</span>
+          <span>Services</span>
+          <span>Staff Profiles</span>
+          <span>Testimonials</span>
+        </div>
+      </div>
+      <span class="disabled-demo-btn">Demo In Progress</span>
+    </article>
+
+    <article class="portfolio-card reveal-card">
+      <div>
+        <div class="portfolio-icon">🔨</div>
+        <span class="coming-soon">Coming Soon</span>
+        <h3>Contractor Website Concept</h3>
+        <p>
+          A future design for contractors and home-service businesses that need project portfolios,
+          service pages, trust-building sections, and contact forms.
+        </p>
+        <div class="portfolio-tags">
+          <span>Projects</span>
+          <span>Service Pages</span>
+          <span>Contact Form</span>
+          <span>Trust Sections</span>
+        </div>
+      </div>
+      <span class="disabled-demo-btn">Demo In Progress</span>
+    </article>
+
+    <article class="portfolio-card reveal-card">
+      <div>
+        <div class="portfolio-icon">🛍️</div>
+        <span class="coming-soon">Coming Soon</span>
+        <h3>Online Store Website Concept</h3>
+        <p>
+          A future ecommerce-style concept for businesses that need product displays,
+          collections, carts, checkout flow, and mobile-friendly shopping.
+        </p>
+        <div class="portfolio-tags">
+          <span>Products</span>
+          <span>Collections</span>
+          <span>Cart</span>
+          <span>Checkout</span>
+        </div>
+      </div>
+      <span class="disabled-demo-btn">Demo In Progress</span>
+    </article>
+
+    <article class="portfolio-card reveal-card">
+      <div>
+        <div class="portfolio-icon">✨</div>
+        <span class="coming-soon">Open Slot</span>
+        <h3>Custom Industry Concept</h3>
+        <p>
+          A flexible portfolio slot for any industry you decide to target next, such as auto detailing,
+          gyms, salons, cleaning companies, architecture studios, or local shops.
+        </p>
+        <div class="portfolio-tags">
+          <span>Custom Layout</span>
+          <span>Lead Generation</span>
+          <span>Branding</span>
+          <span>SEO Structure</span>
+        </div>
+      </div>
+      <span class="disabled-demo-btn">Ready To Customize</span>
+    </article>
+  </div>
+</section>
+
+<section class="portfolio-section alt">
+  <div class="portfolio-heading reveal">
+    <h2>How Each Portfolio Concept Will Be Built</h2>
+    <p>
+      Each future showcase should do more than look nice. It should show how a website can help a specific type of
+      business build trust, explain services, collect leads, and guide visitors toward action.
+    </p>
+  </div>
+
+  <div class="portfolio-process-grid">
+    <div class="portfolio-process-card reveal-card">
+      <span>01</span>
+      <h3>Industry Research</h3>
+      <p>Each concept starts with the customer journey, common questions, and features that matter for that industry.</p>
+    </div>
+
+    <div class="portfolio-process-card reveal-card">
+      <span>02</span>
+      <h3>Custom Visual Style</h3>
+      <p>The layout, colors, fonts, and tone should feel unique instead of looking like the same template repeated.</p>
+    </div>
+
+    <div class="portfolio-process-card reveal-card">
+      <span>03</span>
+      <h3>Conversion Sections</h3>
+      <p>Every demo should include purposeful calls-to-action, trust sections, service details, and easy contact paths.</p>
+    </div>
+
+    <div class="portfolio-process-card reveal-card">
+      <span>04</span>
+      <h3>Mobile Experience</h3>
+      <p>Each preview should be designed to look clean and usable on phones, where many visitors first discover businesses.</p>
+    </div>
+  </div>
+</section>
+
+<section class="portfolio-section">
+  <div class="portfolio-cta reveal-card">
+    <h2>Don’t See Your Industry Yet?</h2>
+    <p>
+      Every NSS website can be custom built around your business, goals, style, and customers. Use the Website Studio
+      to explore your options or schedule a complimentary consultation to talk through your idea.
+    </p>
+    <div class="portfolio-actions">
+      <a href="builder.html" class="btn">Open Website Studio</a>
+      <a href="https://calendly.com/bouch-anwar19/30min" class="secondary-btn" target="_blank" rel="noopener noreferrer">
+        Claim Complimentary Preview
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+function toggleMenu() {
+  document.querySelector(".dropdown-menu").classList.toggle("show");
+}
+</script>
+
+<script>
+const revealElements = document.querySelectorAll('.reveal');
+
+function revealOnScroll() {
+  revealElements.forEach((element) => {
+    const rect = element.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    if (rect.top < windowHeight * 0.85 && rect.bottom > windowHeight * 0.1) {
+      element.classList.add('active');
+      element.classList.remove('fade-out');
+    } else {
+      element.classList.remove('active');
+      element.classList.add('fade-out');
+    }
+  });
+}
+
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
+</script>
+
+<script>
+const animatedCards = document.querySelectorAll(".reveal-card");
+
+function revealSpecialCards() {
+  animatedCards.forEach(card => {
+    const cardTop = card.getBoundingClientRect().top;
+    const cardBottom = card.getBoundingClientRect().bottom;
+    const windowHeight = window.innerHeight;
+
+    if (cardTop < windowHeight - 90 && cardBottom > 70) {
+      card.classList.add("active");
+    } else {
+      card.classList.remove("active");
+    }
+  });
+}
+
+window.addEventListener("scroll", revealSpecialCards);
+window.addEventListener("load", revealSpecialCards);
+</script>
+
+</body>
+</html>
